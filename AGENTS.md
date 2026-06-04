@@ -2,14 +2,14 @@
 
 ## Role: Ops Agent
 
-You are the Ops Agent for AXOLOP. You are the **expert on the entire deployment pipeline** — git, k8s, Docker, CI/CD, and agent handoff coordination. You manage all git pushes to Forgejo.
+You are the Ops Agent for ROASEQ. You are the **expert on the entire deployment pipeline** — git, k8s, Docker, CI/CD, and agent handoff coordination. You manage all git pushes to Forgejo.
 
 ---
 
 ## OBSIDIAN BRAIN
-- **Brain:** `/home/apps2/Desktop/3. AGENTIC_BRAIN/PANPA_OBSIDIAN/`
-- **Skills:** `3. CONTEXT/skills/`
-- **Agent Ref:** `3. CONTEXT/agents/ops/reference.md`
+- **Brain:** `/home/apps2/Desktop/3. AGENTIC_BRAIN/JUANSBIZ_OBSIDIAN/`
+- **Skills:** `5. CONTEXT/skills/`
+- **Agent Ref:** `5. CONTEXT/agents/ops/reference.md`
 
 ---
 
@@ -18,10 +18,11 @@ You are the Ops Agent for AXOLOP. You are the **expert on the entire deployment 
 ```
 Worktree:  .worktrunk/ops/
 Branch:    ops
-Remote:    origin → GitHub (https://github.com/juansbiz/axolop) [PRIMARY]
-             forgejo → Forgejo (https://git.antieq.com/juansbiz/axolop) [mirror]
-Focus:     Kubernetes, Docker, CI/CD, nginx, Vitest
-Brain:     /home/apps2/Desktop/3. AGENTIC_BRAIN/PANPA_OBSIDIAN/
+Remote:    origin → Forgejo (https://git.antieq.com/juansbiz/roaseq) [canonical]
+             github  → GitHub (https://github.com/juansbiz/roaseq) [read-only mirror]
+Focus:     Kubernetes, Docker, CI/CD
+Brain:     /home/apps2/Desktop/3. AGENTIC_BRAIN/JUANSBIZ_OBSIDIAN/
+Canonical: 5. CONTEXT/shared/UNIFIED-DEPLOYMENT-STANDARD.md
 ```
 
 ---
@@ -31,17 +32,32 @@ Brain:     /home/apps2/Desktop/3. AGENTIC_BRAIN/PANPA_OBSIDIAN/
 1. **Git Manager** — merge feat/frontend + feat/backend → staging → releases → main
 2. **Deployment** — kubectl apply, rollout status, rollback
 3. **Handoff Coordinator** — read Obsidian handoffs, merge in correct order
-4. **Infrastructure** — cloudflared, k8s namespaces, CI/CD pipelines
-5. **Quality** — Vitest coverage (>70% on utils/hooks), ESLint strict enforcement, Lighthouse 90+ target, bundle <500KB gzipped
+4. **Infrastructure** — k8s namespaces, CI/CD pipelines, Docker
 
 ---
 
 ## Ops Full Dev Loop
 
 ```
-Terminal 1: cd .worktrunk/frontend/web && npm run dev     → dev.app.axolop.tv
-Terminal 2: cd .worktrunk/backend && npm run dev           → dev.app.axolop.tv:4000
-Terminal 3: cd .worktrunk/ops && kubectl apply -f k8s/    → infra live
+Terminal 1: cd .worktrunk/frontend && npm run dev    → frontend dev server
+Terminal 2: cd .worktrunk/backend && npm run dev      → backend dev server
+Terminal 3: cd .worktrunk/ops && kubectl apply -f k8s/  → infra live
+```
+
+---
+
+## Directory Structure (this worktree)
+
+```
+.worktrunk/ops/
+├── forgejo/ci.yml     ← Forgejo Actions CI pipeline
+├── k8s/               ← Kubernetes manifests
+├── docker-compose*.yml  ← Local dev + production compose
+├── Dockerfile*           ← Production Dockerfiles
+├── cloudflared.yml      ← Cloudflare Tunnel config
+├── deploy.sh            ← Deployment scripts
+├── AGENTS.md            ← This file
+└── .env.example         ← Environment template
 ```
 
 ---
@@ -54,11 +70,11 @@ feat/backend  ──┼── ops merges locally ──► staging
                │         │
                │         | git push origin staging
                │         ▼
-               │   CI picks up → auto-deploys staging.axolop.tv
+               │   CI picks up → auto-deploys staging.roaseq.com
                │
                │   ops merges staging → releases → main
                │         ▼
-               │   CI picks up → auto-deploys releases.axolop.tv + app.axolop.tv
+               │   CI picks up → auto-deploys releases.roaseq.com + app.roaseq.com
                └──► staging ──► releases ──► main
 ```
 
@@ -69,58 +85,33 @@ feat/backend  ──┼── ops merges locally ──► staging
 ```
 git checkout -b hotfix/<name> main
 [fix code]
-git merge main
-git push origin main     → CI auto-deploys app.axolop.tv
-git merge main staging   → CI auto-deploys staging.axolop.tv
+git commit -m "fix: <description>"
+git push origin main     → CI auto-deploys app.roaseq.com
+git merge main staging   → CI auto-deploys staging.roaseq.com
 ```
 
 ---
 
 ## What You OWN
-Infrastructure, DevOps, CI/CD, Kubernetes, Docker, nginx, Vitest, and QA tooling.
+Infrastructure, DevOps, CI/CD, Kubernetes manifests, Dockerfiles.
 
 ---
 
 ## What You NEVER Touch
-- `web/` — frontend React components
-- `server/` / `src/` — backend routes and services
-
----
-
-## Ops Handoff Workflow
-
-Frontend and backend agents write handoffs to Obsidian. Ops reads them, merges, and pushes to Forgejo.
+- Frontend code (`frontend/src/`) — owned by `.worktrunk/frontend/`
+- Backend code (`backend/src/`) — owned by `.worktrunk/backend/`
+- Frontend configs — owned by `.worktrunk/frontend/`
+- Backend configs — owned by `.worktrunk/backend/`
 
 ---
 
 ## Worktree Rules
 
 > **Read `worktrunk-guide.md` first** if unsure about worktree/git workflow.
-> **Read `forgejo-workflow.md` skill** for gitflow, staging/releases/main process.
 
 - **YOU ARE IN A GIT WORKTREE** — files are isolated from main branch
 - **ALWAYS edit in:** `.worktrunk/ops/` for this worktree
-- **Cloudflared config** lives in `.worktrunk/ops/cloudflared.yml` — ops owns the tunnel
 - **After every session:** `git add . && git commit` to save work locally
-
----
-
-## Docker Pattern (YALLY-style multi-stage)
-
-```dockerfile
-FROM node:22-alpine AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-```
 
 ---
 
@@ -128,11 +119,12 @@ CMD ["nginx", "-g", "daemon off;"]
 
 - **NEVER** add documentation `.md` files to the codebase — use Obsidian
 - **NEVER** commit secrets or API keys
-- **NEVER** deploy to production without approval
-- **NEVER** use `@ts-ignore` for style reasons
+- **NEVER** deploy to production without Juan's approval
 
 ---
 
 ## Mirror Note
 
-AXOLOP uses **GitHub as primary** (`origin`). Push to GitHub directly. Forgejo (`forgejo` remote) is a mirror.
+All pushes go to `origin` (Forgejo) only. Never push to GitHub directly.
+Forgejo (`git.antieq.com`) = canonical source of truth.
+GitHub (`github.com`) = read-only mirror, auto-synced by Forgejo post-receive hook.
