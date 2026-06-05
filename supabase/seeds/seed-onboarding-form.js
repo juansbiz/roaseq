@@ -420,7 +420,7 @@ async function seedOnboardingForm() {
     }
 
     console.log('\n📋 Admin Access Instructions:');
-    console.log('   1. Login with axolopcrm@gmail.com');
+    console.log('   1. Login with roaseqcrm@gmail.com');
     console.log('   2. Navigate to Forms section');
     console.log('   3. Edit "CRM Onboarding - Regular Flow" or "CRM Onboarding - Affiliate Flow"');
     console.log('   4. Customize questions, logic, and endings as needed');

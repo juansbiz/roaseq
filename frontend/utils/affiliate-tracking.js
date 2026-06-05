@@ -5,8 +5,8 @@
  * @module affiliate-tracking
  */
 
-const REFERRAL_CODE_KEY = "axolop_referral_code";
-const REFERRAL_EXPIRY_KEY = "axolop_referral_expiry";
+const REFERRAL_CODE_KEY = "roaseq_referral_code";
+const REFERRAL_EXPIRY_KEY = "roaseq_referral_expiry";
 const REFERRAL_EXPIRY_DAYS = 30; // Cookie lasts 30 days
 
 /**

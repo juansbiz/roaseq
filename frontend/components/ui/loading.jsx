@@ -66,7 +66,7 @@ export const LogoLoader = ({ size = "default", className }) => {
           style={{ transform: "translateZ(0)" }}
         >
           <img
-            src="/axolop-logo.webp"
+            src="/roaseq-logo.webp"
             alt="Loading"
             className="h-3/4 w-3/4 object-contain will-change-transform"
           />
@@ -152,7 +152,7 @@ export const FullPageLoader = ({ message }) => {
           }}
         >
           <motion.img
-            src="/axolop-logo.webp"
+            src="/roaseq-logo.webp"
             alt="Loading"
             className="h-full w-full object-contain"
             animate={{ rotateY: 360 }}

@@ -14,7 +14,7 @@ export const getCurrentLanguage = () => {
   if (match) return match[1];
 
   // Fallback to localStorage
-  const stored = localStorage.getItem('axolop_language');
+  const stored = localStorage.getItem('roaseq_language');
   if (stored === 'English') return 'en';
   if (stored === 'Spanish') return 'es';
 

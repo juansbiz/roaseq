@@ -20,7 +20,7 @@ const SocialProofBar = ({ className }) => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-            Join 6,000+ ecommerce brands who use Axolop
+            Join 6,000+ ecommerce brands who use roaseq
           </p>
         </div>
         

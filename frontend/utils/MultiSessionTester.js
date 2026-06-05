@@ -408,7 +408,7 @@ class MultiSessionTester {
     // Store in localStorage for other tabs to see
     try {
       localStorage.setItem(
-        "axolop_multisession_test_results",
+        "roaseq_multisession_test_results",
         JSON.stringify(summary),
       );
       console.log("💾 Test results saved to localStorage");
@@ -442,7 +442,7 @@ export const runMultiSessionTests = async () => {
 // Export function to get stored results
 export const getStoredTestResults = () => {
   try {
-    const stored = localStorage.getItem("axolop_multisession_test_results");
+    const stored = localStorage.getItem("roaseq_multisession_test_results");
     return stored ? JSON.parse(stored) : null;
   } catch (error) {
     console.warn("Failed to get stored test results:", error);

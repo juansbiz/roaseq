@@ -10,7 +10,7 @@
  * - Items get isPersonalized flag after threshold
  */
 
-const STORAGE_KEY = 'axolop_menu_frequency';
+const STORAGE_KEY = 'roaseq_menu_frequency';
 const ACTIVATION_THRESHOLD = 20; // Total actions before reordering activates
 const RECENCY_DECAY_DAYS = 7;
 

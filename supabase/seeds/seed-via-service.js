@@ -24,7 +24,7 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey, {
   }
 });
 
-const EMAIL = 'axolopcrm@gmail.com';
+const EMAIL = 'roaseqcrm@gmail.com';
 
 async function seedDemoData() {
   try {
@@ -210,7 +210,7 @@ async function seedDemoData() {
       console.log(`✅ Created ${createdOpportunities?.length || 0} opportunities`);
     }
 
-    console.log('\n🎉 Demo data seeded successfully for axolopcrm@gmail.com!');
+    console.log('\n🎉 Demo data seeded successfully for roaseqcrm@gmail.com!');
     console.log('\n📋 Summary:');
     console.log(`   - ${createdLeads.length} leads`);
     console.log(`   - ${createdContacts?.length || 0} contacts`);

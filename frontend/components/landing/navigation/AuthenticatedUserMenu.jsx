@@ -138,7 +138,7 @@ const AuthenticatedUserMenu = ({ user }) => {
   const email = user?.email || "";
 
   // Helper properties
-  const isGodUser = ["axolopcrm@gmail.com", "kate@kateviolet.com"].includes(
+  const isGodUser = ["roaseqcrm@gmail.com", "kate@kateviolet.com"].includes(
     user?.email?.toLowerCase()
   );
   const status = user?.user_metadata?.subscription_status;

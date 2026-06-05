@@ -51,23 +51,23 @@ export const secureStorage = {
    */
   setSession: (session) => {
     if (!session) {
-      localStorage.removeItem("axolop_auth_session");
-      localStorage.removeItem("axolop_auth_timestamp");
+      localStorage.removeItem("roaseq_auth_session");
+      localStorage.removeItem("roaseq_auth_timestamp");
       return;
     }
 
     try {
       const encryptedSession = encrypt(session);
       if (encryptedSession) {
-        localStorage.setItem("axolop_auth_session", encryptedSession);
-        localStorage.setItem("axolop_auth_timestamp", Date.now().toString());
+        localStorage.setItem("roaseq_auth_session", encryptedSession);
+        localStorage.setItem("roaseq_auth_timestamp", Date.now().toString());
       }
     } catch (error) {
       console.error("Failed to encrypt session:", error);
       // Fallback to plaintext storage (development only)
       if (import.meta.env.MODE !== "production") {
-        localStorage.setItem("axolop_auth_session", JSON.stringify(session));
-        localStorage.setItem("axolop_auth_timestamp", Date.now().toString());
+        localStorage.setItem("roaseq_auth_session", JSON.stringify(session));
+        localStorage.setItem("roaseq_auth_timestamp", Date.now().toString());
       }
     }
   },
@@ -77,8 +77,8 @@ export const secureStorage = {
    */
   getSession: () => {
     try {
-      const encryptedSession = localStorage.getItem("axolop_auth_session");
-      const timestamp = localStorage.getItem("axolop_auth_timestamp");
+      const encryptedSession = localStorage.getItem("roaseq_auth_session");
+      const timestamp = localStorage.getItem("roaseq_auth_timestamp");
 
       if (encryptedSession && timestamp) {
         const session = decrypt(encryptedSession);
@@ -96,8 +96,8 @@ export const secureStorage = {
     // Fallback to plaintext (development only)
     if (import.meta.env.MODE !== "production") {
       try {
-        const plaintextSession = localStorage.getItem("axolop_auth_session");
-        const timestamp = localStorage.getItem("axolop_auth_timestamp");
+        const plaintextSession = localStorage.getItem("roaseq_auth_session");
+        const timestamp = localStorage.getItem("roaseq_auth_timestamp");
 
         if (plaintextSession && timestamp) {
           const session = JSON.parse(plaintextSession);
@@ -119,12 +119,12 @@ export const secureStorage = {
    * Clear auth session securely
    */
   clearSession: () => {
-    localStorage.removeItem("axolop_auth_session");
-    localStorage.removeItem("axolop_auth_timestamp");
+    localStorage.removeItem("roaseq_auth_session");
+    localStorage.removeItem("roaseq_auth_timestamp");
 
     // Also clear any other sensitive data
-    localStorage.removeItem("axolop_user_preferences");
-    localStorage.removeItem("axolop_current_business");
+    localStorage.removeItem("roaseq_user_preferences");
+    localStorage.removeItem("roaseq_current_business");
   },
 
   /**

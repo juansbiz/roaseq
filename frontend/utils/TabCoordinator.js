@@ -1,5 +1,5 @@
 /**
- * 🚀 AXOLOP CRM - TAB COORDINATOR
+ * 🚀 ROASEQ CRM - TAB COORDINATOR
  *
  * Prevents conflicts between multiple browser tabs by implementing:
  * - Master tab election system with atomic operations
@@ -72,7 +72,7 @@ class TabCoordinator {
    */
   initializeBroadcastChannel() {
     try {
-      this.broadcastChannel = new BroadcastChannel("axolop-tab-coordination");
+      this.broadcastChannel = new BroadcastChannel("roaseq-tab-coordination");
       this.broadcastChannel.addEventListener(
         "message",
         this.handleBroadcastMessage.bind(this),
@@ -125,7 +125,7 @@ class TabCoordinator {
    * Handle storage events for browsers without BroadcastChannel
    */
   handleStorageEvent(event) {
-    if (event.key === "axolop-tab-broadcast") {
+    if (event.key === "roaseq-tab-broadcast") {
       try {
         const message = JSON.parse(event.newValue);
         this.handleBroadcastMessage({ data: message });
@@ -156,11 +156,11 @@ class TabCoordinator {
           return true; // Success
         } else {
           // Fallback to localStorage
-          localStorage.setItem("axolop-tab-broadcast", JSON.stringify(message));
+          localStorage.setItem("roaseq-tab-broadcast", JSON.stringify(message));
           // Clear immediately to trigger storage events in other tabs
           setTimeout(() => {
             try {
-              localStorage.removeItem("axolop-tab-broadcast");
+              localStorage.removeItem("roaseq-tab-broadcast");
             } catch (error) {
               // Ignore cleanup errors
             }
@@ -206,7 +206,7 @@ class TabCoordinator {
       try {
         // Atomic write - only succeeds if no master or expired master
         localStorage.setItem(
-          "axolop_master_election",
+          "roaseq_master_election",
           JSON.stringify(candidateInfo),
         );
 
@@ -214,7 +214,7 @@ class TabCoordinator {
         await new Promise((resolve) => setTimeout(resolve, 50));
 
         // Verify we won the election
-        const stored = localStorage.getItem("axolop_master_election");
+        const stored = localStorage.getItem("roaseq_master_election");
         const winner = JSON.parse(stored);
 
         if (winner.electionId === electionId) {
@@ -228,7 +228,7 @@ class TabCoordinator {
         }
 
         // Clean up election data
-        localStorage.removeItem("axolop_master_election");
+        localStorage.removeItem("roaseq_master_election");
       } catch (error) {
         console.error("[TabCoordinator] Election failed:", error);
         this.isMaster = false;
@@ -244,7 +244,7 @@ class TabCoordinator {
    */
   getStoredMaster() {
     try {
-      const master = localStorage.getItem("axolop_master_tab");
+      const master = localStorage.getItem("roaseq_master_tab");
       return master ? JSON.parse(master) : null;
     } catch (error) {
       return null;
@@ -269,7 +269,7 @@ class TabCoordinator {
       lastHeartbeat: Date.now(),
     };
 
-    localStorage.setItem("axolop_master_tab", JSON.stringify(masterInfo));
+    localStorage.setItem("roaseq_master_tab", JSON.stringify(masterInfo));
     this.broadcast("MASTER_ELECTION", { action: "become_master", masterInfo });
 
     console.log(`[TabCoordinator] Tab ${this.tabId} became master`);
@@ -327,7 +327,7 @@ class TabCoordinator {
         const masterInfo = this.getStoredMaster();
         if (masterInfo && masterInfo.tabId === this.tabId) {
           masterInfo.lastHeartbeat = Date.now();
-          localStorage.setItem("axolop_master_tab", JSON.stringify(masterInfo));
+          localStorage.setItem("roaseq_master_tab", JSON.stringify(masterInfo));
         }
       }
 
@@ -347,7 +347,7 @@ class TabCoordinator {
       if (masterInfo && masterInfo.tabId === this.tabId) {
         // Update our last heartbeat
         masterInfo.lastHeartbeat = Date.now();
-        localStorage.setItem("axolop_master_tab", JSON.stringify(masterInfo));
+        localStorage.setItem("roaseq_master_tab", JSON.stringify(masterInfo));
       }
     }
 
@@ -366,7 +366,7 @@ class TabCoordinator {
     while (attempt < maxRetries) {
       attempt++;
 
-      const lockKey = `axolop_mutex_${lockName}`;
+      const lockKey = `roaseq_mutex_${lockName}`;
       const lockData = {
         tabId: this.tabId,
         timestamp: Date.now(),
@@ -423,7 +423,7 @@ class TabCoordinator {
       return false; // Not held by this tab
     }
 
-    const lockKey = `axolop_mutex_${lockName}`;
+    const lockKey = `roaseq_mutex_${lockName}`;
 
     try {
       localStorage.removeItem(lockKey);
@@ -491,7 +491,7 @@ class TabCoordinator {
    */
   checkStorageQuota() {
     try {
-      const testKey = "axolop_quota_test";
+      const testKey = "roaseq_quota_test";
       const testData = "x".repeat(1024); // 1KB test
 
       localStorage.setItem(testKey, testData);
@@ -517,7 +517,7 @@ class TabCoordinator {
     try {
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key && key.startsWith("axolop_")) {
+        if (key && key.startsWith("roaseq_")) {
           try {
             const data = JSON.parse(localStorage.getItem(key));
 
@@ -564,7 +564,7 @@ class TabCoordinator {
   relinquishMaster() {
     if (this.isMaster) {
       this.isMaster = false;
-      localStorage.removeItem("axolop_master_tab");
+      localStorage.removeItem("roaseq_master_tab");
       this.broadcast("MASTER_RELINQUISH");
       console.log(
         `[TabCoordinator] Tab ${this.tabId} relinquished master status`,

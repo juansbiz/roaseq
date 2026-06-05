@@ -246,7 +246,7 @@ export const UNIVERSAL_MENU_ITEMS = [
     description: 'Clear personalized ordering',
     action: () => {
       try {
-        localStorage.removeItem('axolop_menu_frequency');
+        localStorage.removeItem('roaseq_menu_frequency');
         console.log('Menu order reset');
       } catch {}
     },

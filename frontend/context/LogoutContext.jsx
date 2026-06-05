@@ -65,7 +65,7 @@ export const LogoutProvider = ({ children }) => {
     // Broadcast to other tabs
     try {
       localStorage.setItem(
-        "axolop_logout_state",
+        "roaseq_logout_state",
         JSON.stringify({
           isLoggingOut: true,
           timestamp: Date.now(),
@@ -76,7 +76,7 @@ export const LogoutProvider = ({ children }) => {
       // Trigger storage event for other tabs
       window.dispatchEvent(
         new StorageEvent("storage", {
-          key: "axolop_logout_state",
+          key: "roaseq_logout_state",
           newValue: JSON.stringify({
             isLoggingOut: true,
             timestamp: Date.now(),
@@ -120,12 +120,12 @@ export const LogoutProvider = ({ children }) => {
 
     // Clear logout state from storage
     try {
-      localStorage.removeItem("axolop_logout_state");
+      localStorage.removeItem("roaseq_logout_state");
 
       // Trigger storage event for other tabs
       window.dispatchEvent(
         new StorageEvent("storage", {
-          key: "axolop_logout_state",
+          key: "roaseq_logout_state",
           newValue: null,
         }),
       );
@@ -152,7 +152,7 @@ export const LogoutProvider = ({ children }) => {
         return;
       }
 
-      if (event.key === "axolop_logout_state") {
+      if (event.key === "roaseq_logout_state") {
         try {
           const logoutState = event.newValue
             ? JSON.parse(event.newValue)
@@ -196,7 +196,7 @@ export const LogoutProvider = ({ children }) => {
 
     // Check for existing logout state on mount
     try {
-      const existingState = localStorage.getItem("axolop_logout_state");
+      const existingState = localStorage.getItem("roaseq_logout_state");
       if (existingState) {
         const logoutState = JSON.parse(existingState);
         if (logoutState.isLoggingOut) {

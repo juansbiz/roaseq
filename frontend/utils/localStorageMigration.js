@@ -50,7 +50,7 @@ export const migrateTheme = async (token) => {
  */
 export const migrateTodos = async (token) => {
   try {
-    const todos = localStorageGetJSON('axolop-todos', null);
+    const todos = localStorageGetJSON('roaseq-todos', null);
     if (!todos || !Array.isArray(todos) || todos.length === 0) return null;
 
     // Create each todo in Supabase
@@ -78,7 +78,7 @@ export const migrateTodos = async (token) => {
     }
 
     // Clear from localStorage after successful migration
-    localStorageRemove('axolop-todos');
+    localStorageRemove('roaseq-todos');
     console.log(`✅ ${migratedTodos.length} todos migrated to Supabase`);
     return migratedTodos;
   } catch (error) {

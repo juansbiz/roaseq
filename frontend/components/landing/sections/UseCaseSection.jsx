@@ -205,7 +205,7 @@ const UseCaseSection = ({ className }) => {
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             See how agencies like yours are transforming their operations and
-            boosting their bottom line with Axolop
+            boosting their bottom line with roaseq
           </p>
         </div>
 

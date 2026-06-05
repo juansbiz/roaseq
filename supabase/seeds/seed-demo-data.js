@@ -18,7 +18,7 @@ async function main() {
   const { data: demoUser, error: userError } = await supabase
     .from('users')
     .insert({
-      email: 'demo@axolop.com',
+      email: 'demo@roaseq.com',
       name: 'Demo User',
       first_name: 'Demo',
       last_name: 'User',
@@ -35,7 +35,7 @@ async function main() {
       const { data, error } = await supabase
         .from('users')
         .select('*')
-        .eq('email', 'demo@axolop.com')
+        .eq('email', 'demo@roaseq.com')
         .single();
         
       if (error) {
