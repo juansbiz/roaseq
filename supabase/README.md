@@ -59,7 +59,7 @@ Seed scripts are in `supabase/seeds/`:
 node supabase/seeds/seed-demo-data.js
 
 # Available seeds:
-# - seed-axolop-account.js    # Main account setup
+# - seed-roaseq-account.js    # Main account setup
 # - seed-demo-data.js         # Demo data for testing
 # - seed-for-user.js          # Seed for specific user
 # - seed-onboarding-form.js   # Onboarding form data
@@ -152,7 +152,7 @@ SELECT * FROM your_table;
 
 ## Storage Buckets
 
-Supabase Storage buckets used by Axolop CRM:
+Supabase Storage buckets used by ROASEQ CRM:
 
 | Bucket | Purpose | Access | Max Size |
 |--------|---------|--------|----------|
