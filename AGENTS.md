@@ -128,3 +128,24 @@ Infrastructure, DevOps, CI/CD, Kubernetes manifests, Dockerfiles.
 All pushes go to `origin` (Forgejo) only. Never push to GitHub directly.
 Forgejo (`git.antieq.com`) = canonical source of truth.
 GitHub (`github.com`) = read-only mirror, auto-synced by Forgejo post-receive hook.
+
+---
+
+## Session Summary
+
+**Session 2026-06-05 PM (ROASEQ Rebrand):**
+
+Complete Axolop → ROASEQ rebrand across all worktrees:
+
+- Renamed logo files: axolop-logo.webp → roaseq-logo.webp, axolop-black-transparent.webp → roaseq-black-transparent.webp
+- Updated all display text: Login, Register, Landing, Navigation, Footer, Landing sections
+- Updated SEO meta tags, OG tags, theme-color (#7b1c14 → #101010)
+- Updated subdomain-detector.js: axolop.com → roaseq.com
+- Updated SEO.jsx: BASE_URL → roaseq.com
+- Updated Docker container names: axolop-redis → roaseq-redis, axolop-backend → roaseq-backend
+- Updated all scripts, Dockerfiles, Docker README, SQL comments
+- Updated all utility file comments to ROASEQ CRM
+- Merged main → ops worktree (resolved conflicts: ops keeps its own docker/k8s structure)
+- Commits pushed: main (f6c3aaf), feat/backend (c8d3a52), ops (d6210fc)
+
+Internal localStorage keys (axolop_*) kept for backward compat — not user-visible.
