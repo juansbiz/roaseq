@@ -52,7 +52,7 @@ const PricingComparisonSection = () => {
             <span className="text-gray-400">Pick the winner.</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-xl mx-auto">
-            See why thousands of founders switched from expensive tools to Axolop.
+            See why thousands of founders switched from expensive tools to ROASEQ.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ const PricingComparisonSection = () => {
             <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">Feature</div>
           </div>
           <div className="p-4 text-center">
-            <div className="text-[#f2ff00] font-bold text-lg">Axolop</div>
+            <div className="text-[#f2ff00] font-bold text-lg">ROASEQ</div>
             <div className="text-gray-500 text-xs">Free - $79/mo</div>
           </div>
           <div className="p-4 text-center">

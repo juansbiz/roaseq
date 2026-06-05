@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
 // Base URL for hreflang tags
-const BASE_URL = 'https://www.axolop.com';
+const BASE_URL = 'https://www.roaseq.com';
 
 // Supported languages for hreflang
 const SUPPORTED_LANGUAGES = [
@@ -11,14 +11,14 @@ const SUPPORTED_LANGUAGES = [
 ];
 
 const SEO = ({
-  title = 'Axolop - Ecommerce CRM | Replace Klaviyo & Omnisend',
-  description = 'Axolop: The email marketing CRM for ecommerce. Replace Klaviyo, Omnisend, and Mailchimp with one flat-price platform. Save money, own your data, scale forever.',
+  title = 'ROASEQ - Ecommerce CRM | Replace Klaviyo & Omnisend',
+  description = 'ROASEQ: The email marketing CRM for ecommerce. Replace Klaviyo, Omnisend, and Mailchimp with one flat-price platform. Save money, own your data, scale forever.',
   keywords = 'ecommerce CRM, Klaviyo alternative, Omnisend alternative, Mailchimp alternative, email marketing CRM, Shopify CRM, DTC CRM, ecommerce email marketing, ecommerce automation, own your data CRM',
-  url = 'https://www.axolop.com',
-  image = 'https://www.axolop.com/axolop-og-image.jpg',
-  twitterImage = 'https://www.axolop.com/axolop-twitter-image.jpg',
+  url = 'https://www.roaseq.com',
+  image = 'https://www.roaseq.com/roaseq-og-image.jpg',
+  twitterImage = 'https://www.roaseq.com/roaseq-twitter-image.jpg',
   type = 'website',
-  author = 'Axolop LLC',
+  author = 'ROASEQ LLC',
   rating = '4.8',
   reviewCount = '250',
   price = '149.00',
@@ -57,7 +57,7 @@ const SEO = ({
     : title;
   
   const seoDescription = affiliateName
-    ? `Join ${affiliateName}'s team with a 30-day free trial of Axolop. ${description}`
+    ? `Join ${affiliateName}'s team with a 30-day free trial of ROASEQ. ${description}`
     : description;
 
   return (
@@ -76,8 +76,8 @@ const SEO = ({
       <meta property="og:title" content={seoTitle} />
       <meta property="og:description" content={seoDescription} />
       <meta property="og:image" content={image} />
-      <meta property="og:image:alt" content="Axolop - All-in-One Business Platform" />
-      <meta property="og:site_name" content="Axolop" />
+      <meta property="og:image:alt" content="ROASEQ - All-in-One Business Platform" />
+      <meta property="og:site_name" content="ROASEQ" />
       <meta property="og:locale" content={ogLocale} />
       {currentLanguage === 'es' && <meta property="og:locale:alternate" content="en_US" />}
       {currentLanguage === 'en' && <meta property="og:locale:alternate" content="es_419" />}
@@ -88,8 +88,8 @@ const SEO = ({
       <meta name="twitter:title" content={seoTitle} />
       <meta name="twitter:description" content={seoDescription} />
       <meta name="twitter:image" content={twitterImage} />
-      <meta name="twitter:image:alt" content="Axolop - All-in-One Business Platform" />
-      <meta name="twitter:site" content="@axolopcrm" />
+      <meta name="twitter:image:alt" content="ROASEQ - All-in-One Business Platform" />
+      <meta name="twitter:site" content="@roaseqcrm" />
       
       {/* Canonical URL */}
       <link rel="canonical" href={url} />
@@ -122,7 +122,7 @@ const SEO = ({
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          "name": "Axolop",
+          "name": "ROASEQ",
           "description": seoDescription,
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Web",

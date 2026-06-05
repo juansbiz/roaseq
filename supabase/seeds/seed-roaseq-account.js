@@ -21,7 +21,7 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 const EMAIL = 'axolopcrm@gmail.com';
 
-async function seedAxolopAccount() {
+async function seedRoaseqAccount() {
   try {
     console.log(`\n🔍 Looking up user: ${EMAIL}`);
 
@@ -272,4 +272,4 @@ async function seedAxolopAccount() {
   }
 }
 
-seedAxolopAccount();
+seedRoaseqAccount();

@@ -2,7 +2,7 @@
  * Subdomain Detection Utilities
  *
  * Provides utilities for detecting, validating, and managing subdomains
- * in the Axolop CRM multi-tenant architecture.
+ * in the ROASEQ CRM multi-tenant architecture.
  */
 
 // Reserved subdomains that cannot be used by agencies
@@ -13,7 +13,7 @@ export const RESERVED_SUBDOMAINS = [
 ];
 
 // Base domain (production)
-export const BASE_DOMAIN = 'axolop.com';
+export const BASE_DOMAIN = 'roaseq.com';
 
 /**
  * Extract subdomain from current hostname
@@ -22,9 +22,9 @@ export const BASE_DOMAIN = 'axolop.com';
  * @returns {string|null} - Subdomain or null if none detected
  *
  * Examples:
- *   extractSubdomain('acme.axolop.com') � 'acme'
- *   extractSubdomain('www.axolop.com') � null
- *   extractSubdomain('axolop.com') � null
+ *   extractSubdomain('acme.roaseq.com') � 'acme'
+ *   extractSubdomain('www.roaseq.com') � null
+ *   extractSubdomain('roaseq.com') � null
  *   extractSubdomain('localhost') � null
  */
 export function extractSubdomain(hostname = window.location.hostname) {
@@ -188,8 +188,8 @@ export function generateSubdomainSuggestions(businessName) {
  * @returns {string} - Full URL
  *
  * Examples:
- *   buildSubdomainUrl('acme') � 'https://acme.axolop.com'
- *   buildSubdomainUrl('acme', '/app/dashboard') � 'https://acme.axolop.com/app/dashboard'
+ *   buildSubdomainUrl('acme') � 'https://acme.roaseq.com'
+ *   buildSubdomainUrl('acme', '/app/dashboard') � 'https://acme.roaseq.com/app/dashboard'
  */
 export function buildSubdomainUrl(subdomain, path = '') {
   if (!subdomain) {
@@ -259,7 +259,7 @@ export function redirectToMainDomain(path = '/') {
  * Format subdomain for display
  *
  * @param {string} subdomain - Subdomain
- * @returns {string} - Formatted display (e.g., "acme.axolop.com")
+ * @returns {string} - Formatted display (e.g., "acme.roaseq.com")
  */
 export function formatSubdomainDisplay(subdomain) {
   if (!subdomain) return BASE_DOMAIN;

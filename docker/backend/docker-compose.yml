@@ -2,8 +2,8 @@ services:
   # Redis Cache Service (port 3008)
   redis:
     image: redis:7-alpine
-    container_name: axolop-redis-3008
-    restart: unless-stopped
+    container_name: roaseq-redis-3008
+    restart: always
     ports:
       - "3008:6379"
     volumes:
@@ -15,7 +15,7 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - axolop-network
+      - roaseq-network
 
   # Backend API Service (port 3007)
   backend:
@@ -23,8 +23,8 @@ services:
       context: ../
       dockerfile: docker/backend/Dockerfile
       target: backend
-    container_name: axolop-backend-3007
-    restart: unless-stopped
+    container_name: roaseq-backend-3007
+    restart: always
     ports:
       - "3007:3007"
     env_file:
@@ -40,12 +40,12 @@ services:
       start_period: 40s
       retries: 3
     networks:
-      - axolop-network
+      - roaseq-network
     volumes:
       - ../../logs:/app/logs
 
 networks:
-  axolop-network:
+  roaseq-network:
     driver: bridge
 
 volumes:

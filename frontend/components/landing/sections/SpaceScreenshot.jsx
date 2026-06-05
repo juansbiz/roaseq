@@ -70,7 +70,7 @@ const SpaceScreenshot = ({
         </div>
         <div className="flex-1 flex items-center justify-center">
           <div className="px-4 py-1 rounded-full bg-white/5 text-xs text-gray-400">
-            app.axolop.com
+            app.roaseq.com
           </div>
         </div>
         <div className="flex items-center gap-2 text-gray-500">

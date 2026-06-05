@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://axolopcrm-production.up.railway.app/api/:path*"
+      "destination": "https://roaseqcrm-production.up.railway.app/api/:path*"
     },
     {
       "source": "/health",
-      "destination": "https://axolopcrm-production.up.railway.app/health"
+      "destination": "https://roaseqcrm-production.up.railway.app/health"
     },
     {
       "source": "/:path*",

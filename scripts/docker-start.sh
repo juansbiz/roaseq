@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# Axolop CRM - Docker Backend Start Script
+# ROASEQ CRM - Docker Backend Start Script
 # ==============================================================================
 # This script prepares the environment and starts the backend in Docker containers.
 # It handles:
@@ -30,7 +30,7 @@ else
     exit 1
 fi
 
-echo -e "${GREEN}=== Axolop CRM Docker Backend Launcher ===${NC}"
+echo -e "${GREEN}=== ROASEQ CRM Docker Backend Launcher ===${NC}"
 echo ""
 
 # 1. Check for Docker

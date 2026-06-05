@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => {
       process.env.SENTRY_AUTH_TOKEN &&
       sentryVitePlugin({
         org: process.env.SENTRY_ORG || "hificopy-llc",
-        project: process.env.SENTRY_PROJECT || "axolop-crm-frontend",
+        project: process.env.SENTRY_PROJECT || "roaseq-crm-frontend",
         authToken: process.env.SENTRY_AUTH_TOKEN,
 
         // Upload source maps to Sentry
@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
 
         // Release configuration
         release: {
-          name: `axolop-crm-frontend@${process.env.npm_package_version || "1.2.0"}`,
+          name: `roaseq-crm-frontend@${process.env.npm_package_version || "1.2.0"}`,
           cleanArtifacts: true, // Delete maps after upload
           finalize: true, // Mark release as deployed
         },
@@ -195,7 +195,7 @@ export default defineConfig(({ mode }) => {
   server: {
     host: true,
     port: 3012,
-    allowedHosts: ['axolop.antieq.com', 'localhost', '127.0.0.1'],
+    allowedHosts: ['roaseq.antieq.com', 'localhost', '127.0.0.1'],
     hmr: {
       overlay: true,
     },

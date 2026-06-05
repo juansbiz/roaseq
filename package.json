@@ -1,7 +1,7 @@
 {
-  "name": "axolop-crm",
+  "name": "roaseq-crm",
   "version": "1.2.0",
-  "description": "Axolop CRM - The New Age CRM with Local AI Second Brain. Replaces GoHighLevel, ClickUp, Notion, Miro, iClosed, and 10+ tools for agency owners.",
+  "description": "ROASEQ CRM - The New Age CRM with Local AI Second Brain. Replaces GoHighLevel, ClickUp, Notion, Miro, iClosed, and 10+ tools for agency owners.",
   "type": "module",
   "scripts": {
     "postinstall": "npx -y npm-force-resolutions",
@@ -29,11 +29,10 @@
     "pre-commit": "npm run check-typos && npm run validate:config && npm run translations:validate",
     "start": "node src/backend/index.js",
     "pm2:start": "pm2 start ecosystem.config.js --env production",
-    "pm2:stop": "pm2 stop axolop-crm",
-    "pm2:restart": "pm2 restart axolop-crm",
-    "pm2:logs": "pm2 logs axolop-crm",
-    "pm2:status": "pm2 status",
-    "pm2:delete": "pm2 delete axolop-crm",
+    "pm2:stop": "pm2 stop roaseq-crm",
+    "pm2:restart": "pm2 restart roaseq-crm",
+    "pm2:logs": "pm2 logs roaseq-crm",
+    "pm2:delete": "pm2 delete roaseq-crm",
     "check": "npm run lint && npm run build",
     "lint": "eslint \"frontend/**/*.{js,jsx,ts,tsx}\" --max-warnings=0",
     "format": "prettier -w .",
@@ -82,7 +81,7 @@
   },
   "keywords": [
     "crm",
-    "axolop",
+    "roaseq",
     "hubspot",
     "sales",
     "email-marketing",
@@ -98,7 +97,7 @@
     "klaviyo",
     "beehive"
   ],
-  "author": "Axolop LLC",
+  "author": "ROASEQ LLC",
   "license": "PROPRIETARY",
   "dependencies": {
     "@aws-sdk/client-ses": "^3.679.0",

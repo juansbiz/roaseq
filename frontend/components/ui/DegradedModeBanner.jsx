@@ -18,7 +18,7 @@ export function DegradedModeBanner({
   failedContexts = [],
   onRetry,
   onDismiss,
-  supportUrl = 'mailto:support@axolop.com',
+  supportUrl = 'mailto:support@roaseq.com',
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isRetrying, setIsRetrying] = useState(false);

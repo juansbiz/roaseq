@@ -27,7 +27,7 @@ const FOOTER_LINKS = {
   developers: {
     title: "Developers",
     links: [
-      { name: "GitHub", href: "https://github.com/juansbiz/axolopcrm", external: true },
+        { name: "GitHub", href: "https://github.com/juansbiz/roaseqcrm", external: true },
       { name: "Self-Host Guide", href: "/docs/self-host" },
       { name: "API Reference", href: "/docs/api" },
       { name: "Changelog", href: "/changelog" },
@@ -66,27 +66,27 @@ const FOOTER_LINKS = {
  * Social media links
  */
 const SOCIAL_LINKS = [
-  { name: "GitHub", href: "https://github.com/juansbiz/axolopcrm", icon: Github },
-  { name: "Twitter", href: "https://twitter.com/axolopcrm", icon: Twitter },
+  { name: "GitHub", href: "https://github.com/juansbiz/roaseqcrm", icon: Github },
+  { name: "Twitter", href: "https://twitter.com/roaseqcrm", icon: Twitter },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/company/axolop",
+    href: "https://linkedin.com/company/roaseq",
     icon: Linkedin,
   },
-  { name: "YouTube", href: "https://youtube.com/@axolopcrm", icon: Youtube },
+  { name: "YouTube", href: "https://youtube.com/@roaseqcrm", icon: Youtube },
   {
     name: "Instagram",
-    href: "https://instagram.com/axolopcrm",
+    href: "https://instagram.com/roaseqcrm",
     icon: Instagram,
   },
-  { name: "Facebook", href: "https://facebook.com/axolopcrm", icon: Facebook },
+  { name: "Facebook", href: "https://facebook.com/roaseqcrm", icon: Facebook },
 ];
 
-// Axolop Logo Image
-const AxolopLogo = ({ className }) => (
+// ROASEQ Logo Image
+const ROASEQLogo = ({ className }) => (
   <img
     src="/LOGO/transparent-logo.webp"
-    alt="Axolop Logo"
+    alt="ROASEQ Logo"
     className={className}
   />
 );
@@ -119,7 +119,7 @@ const FooterSection = ({ className }) => {
     developers: {
       title: "Developers",
       links: [
-        { name: "GitHub", href: "https://github.com/juansbiz/axolopcrm", external: true },
+      { name: "GitHub", href: "https://github.com/juansbiz/roaseqcrm", external: true },
         { name: "Self-Host Guide", href: "/docs/self-host" },
         { name: "API Reference", href: "/docs/api" },
         { name: "Changelog", href: "/changelog" },
@@ -169,8 +169,8 @@ const FooterSection = ({ className }) => {
           {/* Logo and description */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <AxolopLogo className="w-10 h-10" />
-              <span className="text-xl font-bold text-white">Axolop</span>
+              <ROASEQLogo className="w-10 h-10" />
+              <span className="text-xl font-bold text-white">ROASEQ</span>
             </Link>
             <p className="text-sm text-gray-400 mb-4">
               The open source B2C CRM for ecommerce. Replace Klaviyo, own your data, save money every month.
@@ -234,7 +234,7 @@ const FooterSection = ({ className }) => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <p className="text-sm text-gray-400">
-              {currentYear} Axolop. All rights reserved.
+              {currentYear} ROASEQ. All rights reserved.
             </p>
 
             {/* Trust badges */}
