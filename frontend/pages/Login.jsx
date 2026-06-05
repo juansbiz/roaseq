@@ -62,14 +62,14 @@ export default function Login() {
 
   return (
     <>
-      <SEO title="Sign In - Axolop" />
+      <SEO title="Sign In - ROASEQ" />
       <div className="min-h-screen flex">
         {/* Left Side - Form */}
         <div className="flex-1 flex items-center justify-center p-8">
           <div className="w-full max-w-md">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 mb-8">
-              <img src={logo} alt="Axolop" className="h-10" />
+              <img src={logo} alt="ROASEQ" className="h-10" />
             </Link>
 
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back</h1>
@@ -169,7 +169,7 @@ export default function Login() {
         <div className="hidden lg:block lg:w-1/2 bg-gradient-to-br from-yellow-600 to-yellow-500 p-8">
           <div className="h-full flex items-center justify-center">
             <div className="text-center text-white">
-              <h2 className="text-4xl font-bold mb-4">Grow your brand with Axolop</h2>
+              <h2 className="text-4xl font-bold mb-4">Grow your brand with ROASEQ</h2>
               <p className="text-yellow-500 text-lg">The all-in-one platform for modern brands</p>
             </div>
           </div>

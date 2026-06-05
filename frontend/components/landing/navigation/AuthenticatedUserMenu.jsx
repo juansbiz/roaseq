@@ -203,7 +203,7 @@ const AuthenticatedUserMenu = ({ user }) => {
     <div className="flex items-center gap-3">
       {/* 
         ACTION BUTTON 
-        Active -> "Try Axolop today" (Goes to App)
+        Active -> "Try ROASEQ today" (Goes to App)
         Inactive -> "Subscribe" (Goes to Pricing)
       */}
       <button
@@ -328,7 +328,7 @@ const AuthenticatedUserMenu = ({ user }) => {
                     label="Help Center"
                     onClick={() => {
                       setIsOpen(false);
-                      window.open("https://help.axolop.com", "_blank");
+                      window.open("https://help.roaseq.com", "_blank");
                     }}
                   />
                 </div>

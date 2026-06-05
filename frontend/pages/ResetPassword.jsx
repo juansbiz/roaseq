@@ -70,7 +70,7 @@ export default function ResetPassword() {
             Back to Sign In
           </Link>
 
-          <img src={logo} alt="Axolop" className="h-10 mb-8" />
+          <img src={logo} alt="ROASEQ" className="h-10 mb-8" />
 
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Reset your password</h1>
           <p className="text-gray-600 mb-6">

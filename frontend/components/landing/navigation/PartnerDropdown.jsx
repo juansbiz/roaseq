@@ -31,7 +31,7 @@ const PARTNER_ITEMS = [
   },
   {
     name: "Ambassador Program",
-    description: "For power users and influencers who love Axolop",
+    description: "For power users and influencers who love ROASEQ",
     href: "/ambassador",
     icon: Award,
     badge: "Apply Now",

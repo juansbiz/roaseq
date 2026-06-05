@@ -165,7 +165,7 @@ const UseCaseSection = ({ className }) => {
       industry: "New Founders",
       challenge: "Starting an ecommerce brand and don't know which CRM to pick",
       solution:
-        "Start free with Axolop. No monthly fees, own your data, scale forever.",
+        "Start free with ROASEQ. No monthly fees, own your data, scale forever.",
       result: "Start for free",
       resultDetail: "no strings attached",
       color: "amber",

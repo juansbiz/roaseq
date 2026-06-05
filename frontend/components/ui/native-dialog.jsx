@@ -2,9 +2,9 @@ import React from 'react';
 import { AlertCircle, CheckCircle, Info, X, AlertTriangle } from 'lucide-react';
 
 /**
- * Native Axolop Confirmation Dialog
+ * Native ROASEQ Confirmation Dialog
  * Replaces browser alert() with styled modal
- * Styling matches Axolop's dark theme with orange accents
+ * Styling matches ROASEQ's dark theme with yellow accents
  */
 export const NativeDialog = ({
   isOpen,

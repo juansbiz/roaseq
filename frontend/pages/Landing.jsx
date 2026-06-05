@@ -151,8 +151,8 @@ export default function Landing() {
   return (
     <>
       <SEO 
-        title="Axolop - The All-in-One Platform for Modern Brands"
-        description="Grow your brand with Axolop. The all-in-one platform for e-commerce, marketing, and customer management."
+        title="ROASEQ - The All-in-One Platform for Modern Brands"
+        description="Grow your brand with ROASEQ. The all-in-one platform for e-commerce, marketing, and customer management."
       />
       <div className="min-h-screen bg-[#0F0510]">
         <NavigationBar />

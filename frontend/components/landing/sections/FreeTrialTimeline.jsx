@@ -84,7 +84,7 @@ const FreeTrialTimeline = ({ className }) => {
             Your Free Trial, Made Easy
           </h2>
           <p className="text-lg text-gray-400 max-w-xl mx-auto">
-            Try Axolop risk-free for 14 days. Get full access to all features, including 20+ templates. No commitment, cancel anytime.
+            Try ROASEQ risk-free for 14 days. Get full access to all features, including 20+ templates. No commitment, cancel anytime.
           </p>
         </div>
 

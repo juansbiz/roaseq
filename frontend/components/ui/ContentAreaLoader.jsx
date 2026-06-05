@@ -15,19 +15,19 @@ import React from 'react';
 
 /**
  * ContentAreaLoader - Branded loader for bootstrap/auth states
- * Shows Axolop logo with animated dots
+ * Shows ROASEQ logo with animated dots
  */
 export const ContentAreaLoader = ({ message = 'Loading...' }) => {
   return (
     <div className="flex-1 flex items-center justify-center min-h-[400px] bg-white dark:bg-[#0a0a0a] transition-colors duration-200">
       <div className="text-center">
-        {/* Axolop Logo */}
+        {/* ROASEQ Logo */}
         <div className="w-12 h-12 mx-auto mb-3 relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#101010] to-[#8B1538] rounded-lg animate-pulse"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#101010] to-[#101010] rounded-lg animate-pulse"></div>
           <div className="absolute inset-0 flex items-center justify-center">
             <img
-              src="/axolop-logo.webp"
-              alt="Axolop CRM"
+              src="/roaseq-logo.webp"
+              alt="ROASEQ CRM"
               className="w-8 h-8 object-contain"
             />
           </div>

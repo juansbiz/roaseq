@@ -1,6 +1,6 @@
 # Common Utilities
 
-Centralized, reusable utilities for Axolop CRM.
+Centralized, reusable utilities for ROASEQ CRM.
 
 ## Overview
 
@@ -379,4 +379,4 @@ For questions or issues:
 
 ## License
 
-Part of Axolop CRM - Internal use only.
+Part of ROASEQ CRM - Internal use only.

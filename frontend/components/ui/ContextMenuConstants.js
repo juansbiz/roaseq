@@ -1,7 +1,7 @@
 /**
  * Context Menu Design System Constants
  *
- * CRITICAL: These constants ensure EVERY menu in Axolop CRM looks and feels identical.
+ * CRITICAL: These constants ensure EVERY menu in ROASEQ CRM looks and feels identical.
  * Never deviate from these values unless updating the entire design system.
  */
 
@@ -218,7 +218,7 @@ export const UNIVERSAL_MENU_ITEMS = [
     key: 'feedback',
     label: 'Send Feedback',
     icon: MessageCircle,
-    description: 'Help us improve Axolop',
+    description: 'Help us improve ROASEQ',
     action: () => {
       // TODO: Open feedback modal
       console.log('Open feedback modal');

@@ -72,14 +72,14 @@ export default function Register() {
 
   return (
     <>
-      <SEO title="Sign Up - Axolop" />
+      <SEO title="Sign Up - ROASEQ" />
       <div className="min-h-screen flex">
         {/* Left Side - Form */}
         <div className="flex-1 flex items-center justify-center p-8">
           <div className="w-full max-w-md">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 mb-8">
-              <img src={logo} alt="Axolop" className="h-10" />
+              <img src={logo} alt="ROASEQ" className="h-10" />
             </Link>
 
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Create your account</h1>
@@ -207,7 +207,7 @@ export default function Register() {
           <div className="h-full flex items-center justify-center">
             <div className="text-center text-white">
               <h2 className="text-4xl font-bold mb-4">Join thousands of brands</h2>
-              <p className="text-yellow-500 text-lg">Grow your business with Axolop</p>
+              <p className="text-yellow-500 text-lg">Grow your business with ROASEQ</p>
             </div>
           </div>
         </div>

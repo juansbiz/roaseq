@@ -114,9 +114,9 @@ export const FEATURE_LIMITS = {
 
   // White Label
   whiteLabel: {
-    [TIER_NAMES.SALES]: false,     // Axolop branding
-    [TIER_NAMES.BUILD]: false,     // Axolop branding
-    [TIER_NAMES.SCALE]: true       // Remove Axolop branding
+    [TIER_NAMES.SALES]: false,     // ROASEQ branding
+    [TIER_NAMES.BUILD]: false,     // ROASEQ branding
+    [TIER_NAMES.SCALE]: true       // Remove ROASEQ branding
   }
 };
 
@@ -158,7 +158,7 @@ export const FEATURE_DESCRIPTIONS = {
   teamMembers: 'Team members',
   apiAccess: 'API access for integrations',
   prioritySupport: 'Priority customer support',
-  whiteLabel: 'White-label (remove Axolop branding)'
+  whiteLabel: 'White-label (remove ROASEQ branding)'
 };
 
 /**

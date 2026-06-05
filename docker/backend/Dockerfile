@@ -1,4 +1,4 @@
-# Axolop CRM - Multi-stage Dockerfile
+# ROASEQ CRM - Multi-stage Dockerfile
 # Stage 1: Builder
 FROM node:20-slim AS builder
 

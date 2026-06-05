@@ -24,11 +24,11 @@ export default function Header() {
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2">
         <img
-          src="/axolop-logo.webp"
-          alt="Axolop"
+          src="/roaseq-logo.webp"
+          alt="ROASEQ"
           className="h-7 w-7 object-contain"
         />
-        <span className="text-gray-900 font-bold text-lg">Axolop</span>
+        <span className="text-gray-900 font-bold text-lg">ROASEQ</span>
       </Link>
 
       {/* Search */}

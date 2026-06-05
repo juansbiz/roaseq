@@ -1,7 +1,7 @@
 /**
  * 🔍 AUTH DEBUGGER UTILITY
  *
- * Debug utility for troubleshooting authentication issues in Axolop CRM.
+ * Debug utility for troubleshooting authentication issues in ROASEQ CRM.
  * Usage: Open browser console (F12) and run `window.debugAuth()`
  *
  * This utility provides comprehensive diagnostic information about:
@@ -114,7 +114,7 @@ export function enableAuthDebugging() {
     console.group('🔄 Cross-Tab Synchronization');
     if (requestQueue?.circuitBreakerChannel) {
       console.log('✅ BroadcastChannel active');
-      console.log('Channel Name:', 'axolop_circuit_breaker');
+      console.log('Channel Name:', 'roaseq_circuit_breaker');
     } else {
       console.warn('❌ BroadcastChannel not available');
     }

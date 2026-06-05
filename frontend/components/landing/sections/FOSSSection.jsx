@@ -63,7 +63,7 @@ const FOSSSection = () => {
               The smart choice for modern ecommerce
             </h3>
             <p className="text-gray-400 text-sm">
-              Here's what you're currently paying vs. what Axolop costs.
+              Here's what you're currently paying vs. what ROASEQ costs.
             </p>
           </div>
 
@@ -95,10 +95,10 @@ const FOSSSection = () => {
               </div>
             </div>
 
-            {/* Right: What Axolop Costs */}
+            {/* Right: What ROASEQ Costs */}
             <div className="p-8 bg-[#0a0415]">
               <h4 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-6">
-                What Axolop costs
+                What ROASEQ costs
               </h4>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">

@@ -39,12 +39,12 @@ export default function Sidebar({ isSidebarCollapsed, onMouseEnter, onMouseLeave
         <div className="h-16 flex items-center px-4">
           <Link to="/" className="flex items-center gap-2">
             <img
-              src="/axolop-logo.webp"
-              alt="Axolop"
+              src="/roaseq-logo.webp"
+              alt="ROASEQ"
               className="h-8 w-8 object-contain"
             />
             {!isSidebarCollapsed && (
-              <span className="text-white font-bold text-lg">Axolop</span>
+              <span className="text-white font-bold text-lg">ROASEQ</span>
             )}
           </Link>
         </div>

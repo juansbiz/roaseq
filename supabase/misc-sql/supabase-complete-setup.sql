@@ -477,5 +477,5 @@ CREATE POLICY "Allow all for service role" ON automation_executions
 -- SETUP COMPLETE!
 -- ========================================
 -- All tables, indexes, triggers, and sample data created successfully.
--- Your Axolop CRM database is ready to use!
+-- Your ROASEQ CRM database is ready to use!
 -- ========================================

@@ -14,7 +14,7 @@ const VideoTestimonialsGrid = ({ className }) => {
       title: "Founder",
       company: "Ecom Brand",
       quote:
-        "Axolop helped us escape Klaviyo's pricing. We saved over $500/month and own our customer data forever.",
+        "ROASEQ helped us escape Klaviyo's pricing. We saved over $500/month and own our customer data forever.",
       thumbnail: null,
       platform: "youtube",
       avatar: null,
@@ -70,7 +70,7 @@ const VideoTestimonialsGrid = ({ className }) => {
       title: "New Founder",
       company: "KimCo Store",
       quote:
-        "Started for free, now at $15K/mo. Axolop grows with me. Best decision.",
+        "Started for free, now at $15K/mo. ROASEQ grows with me. Best decision.",
       rating: 5,
       avatar: null,
     },
@@ -88,7 +88,7 @@ const VideoTestimonialsGrid = ({ className }) => {
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Ecommerce founders share their experience breaking free from vendor lock-in
-            with Axolop
+            with ROASEQ
           </p>
         </div>
 

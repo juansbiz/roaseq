@@ -7,7 +7,7 @@ import { getGenericCardMenu } from '@/config/contextMenuConfigs/cardMenus';
 
 /**
  * GlassMorphicCard - Reusable glassmorphism card component
- * Follows Axolop's Apple-inspired design language
+ * Follows ROASEQ's Apple-inspired design language
  */
 const GlassMorphicCard = ({
   children,

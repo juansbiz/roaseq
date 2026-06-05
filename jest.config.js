@@ -1,5 +1,5 @@
 /**
- * Jest Configuration for Axolop CRM
+ * Jest Configuration for ROASEQ CRM
  *
  * Supports both frontend (jsdom) and backend (node) tests
  */

@@ -1,7 +1,7 @@
 // ========================================
 // USER EXPERIENCE IMPROVEMENTS
 // ========================================
-// Frontend UX enhancements for Axolop CRM
+// Frontend UX enhancements for ROASEQ CRM
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { toast } from "@/components/ui/toast-provider";

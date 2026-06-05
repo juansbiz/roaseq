@@ -101,11 +101,11 @@ export default function SimplifiedSidebar({ isSidebarCollapsed, onMouseEnter, on
         <div className="h-16 bg-transparent flex items-center px-4 rounded-br-2xl -mt-[14px] flex-shrink-0 overflow-visible">
           <Link to="/" className="flex items-center gap-2 whitespace-nowrap">
             <img
-              src="/axolop-logo.webp"
-              alt="Axolop"
+              src="/roaseq-logo.webp"
+              alt="ROASEQ"
               className="h-8 w-8 object-contain flex-shrink-0"
             />
-            <span className="text-white font-bold text-lg">Axolop</span>
+            <span className="text-white font-bold text-lg">ROASEQ</span>
           </Link>
         </div>
 

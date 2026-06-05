@@ -159,7 +159,7 @@ export default function MainLayout() {
                 )
               }
               userName={user?.user_metadata?.full_name || "User"}
-              userEmail={user?.email || "user@axolop.com"}
+              userEmail={user?.email || "user@roaseq.com"}
             />
           </div>
         </header>

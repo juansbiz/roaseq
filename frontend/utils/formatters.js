@@ -1,5 +1,5 @@
 /**
- * Locale-Aware Formatters for Axolop CRM
+ * Locale-Aware Formatters for ROASEQ CRM
  *
  * Provides formatting utilities for dates, numbers, and currency
  * that respect the user's language preference.

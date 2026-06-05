@@ -9,11 +9,11 @@ import PartnerDropdown from "./PartnerDropdown";
 import MobileNav from "./MobileNav";
 import AuthenticatedUserMenu from "./AuthenticatedUserMenu";
 
-// Axolop Logo Image
-const AxolopLogo = ({ className }) => (
+// ROASEQ Logo Image
+const RoaseqLogo = ({ className }) => (
   <img
     src="/LOGO/transparent-logo.webp"
-    alt="Axolop Logo"
+    alt="ROASEQ Logo"
     className={className}
   />
 );
@@ -99,10 +99,10 @@ const NavigationBar = ({ transparent = false, className }) => {
               className="flex items-center gap-3 group flex-shrink-0"
             >
               <div className="relative transition-transform duration-200 hover:scale-105 active:scale-95">
-                <AxolopLogo className="w-10 h-10" />
+                <RoaseqLogo className="w-10 h-10" />
               </div>
               <span className="text-xl font-bold text-white tracking-tight">
-                Axolop
+                ROASEQ
               </span>
             </Link>
 
@@ -205,7 +205,7 @@ const NavigationBar = ({ transparent = false, className }) => {
             <div className="max-w-7xl mx-auto px-4 py-2 text-center">
               <p className="text-sm text-white/90">
                 <span className="font-medium">{affiliateName}</span> wants you
-                to try Axolop with{" "}
+                to try ROASEQ with{" "}
                 <span className="font-bold text-white">30 days FREE</span>
               </p>
             </div>

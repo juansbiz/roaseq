@@ -128,7 +128,7 @@ export function getAffiliateBenefits() {
       trialExtension: true, // 30 days vs 14 days
       tierBoost: true, // Access one tier higher during trial
       migration: true, // Free data migration from GoHighLevel/HubSpot
-      academy: true, // Free access to Axolop Academy
+      academy: true, // Free access to ROASEQ Academy
     },
     referralCode: code,
   };

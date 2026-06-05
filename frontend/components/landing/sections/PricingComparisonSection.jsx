@@ -5,37 +5,37 @@ import { Check, X, ArrowRight } from "lucide-react";
 const comparison = [
   {
     feature: "Self-host option",
-    axolop: true,
+    roaseq: true,
     others: [false, false, false],
   },
   {
     feature: "Open API",
-    axolop: true,
+    roaseq: true,
     others: ["Limited", "Limited", "Expensive"],
   },
   {
     feature: "Connect your own AI",
-    axolop: true,
+    roaseq: true,
     others: [false, false, false],
   },
   {
     feature: "Own your data",
-    axolop: true,
+    roaseq: true,
     others: [false, false, false],
   },
   {
     feature: "Flat pricing",
-    axolop: true,
+    roaseq: true,
     others: [false, false, false],
   },
   {
     feature: "No per-seat pricing",
-    axolop: true,
+    roaseq: true,
     others: [true, true, false],
   },
   {
     feature: "Free forever option",
-    axolop: true,
+    roaseq: true,
     others: [false, "Limited", false],
   },
 ];
@@ -85,7 +85,7 @@ const PricingComparisonSection = () => {
                 <span className="text-gray-300 text-sm">{row.feature}</span>
               </div>
               <div className="p-4 flex items-center justify-center">
-                {row.axolop ? (
+                {row.roaseq ? (
                   <div className="w-6 h-6 rounded-full bg-[#f2ff00]/20 flex items-center justify-center">
                     <Check className="h-4 w-4 text-[#f2ff00]" />
                   </div>

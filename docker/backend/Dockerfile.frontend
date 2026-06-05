@@ -1,4 +1,4 @@
-# Axolop CRM Frontend Dockerfile
+# ROASEQ CRM Frontend Dockerfile
 # Build and serve frontend static files
 
 # Stage 1: Builder

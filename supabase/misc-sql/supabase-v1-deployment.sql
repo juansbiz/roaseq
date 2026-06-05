@@ -1,5 +1,5 @@
 -- ===========================================================================
--- Axolop CRM V1 - Complete Database Schema Deployment
+-- ROASEQ CRM V1 - Complete Database Schema Deployment
 -- Run this script in your Supabase SQL Editor
 -- ===========================================================================
 

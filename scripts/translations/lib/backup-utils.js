@@ -25,7 +25,7 @@ export function createBackup(filePath) {
   const dir = dirname(filePath);
   const file = basename(filePath);
   // User mandate: Backups MUST go to external drive, never in project directory
-  const backupDir = join('/Volumes/Axolop Backups/Axolop Backups/ALL/translations_backups', dir.replace(/^\//, ''));
+  const backupDir = join(process.env.BACKUP_DIR || '/Volumes/ROASEQ Backups/ROASEQ Backups/ALL/translations_backups', dir.replace(/^\//, ''));
 
   const timestamp = getTimestamp();
   const backupPath = join(backupDir, `${file}.backup.${timestamp}`);
@@ -51,7 +51,7 @@ export function listBackups(filePath) {
   const dir = dirname(filePath);
   const file = basename(filePath);
   // User mandate: Backups MUST go to external drive, never in project directory
-  const backupDir = join('/Volumes/Axolop Backups/Axolop Backups/ALL/translations_backups', dir.replace(/^\//, ''));
+  const backupDir = join(process.env.BACKUP_DIR || '/Volumes/ROASEQ Backups/ROASEQ Backups/ALL/translations_backups', dir.replace(/^\//, ''));
 
   if (!existsSync(backupDir)) {
     return [];
