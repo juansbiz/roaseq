@@ -1,0 +1,86 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: roaseq-staging
+  namespace: roaseq-staging
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`staging.roaseq.antieq.com`)
+    kind: Rule
+    services:
+    - name: roaseq-frontend
+      port: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roaseq-frontend
+  namespace: roaseq-staging
+spec:
+  selector:
+    app: roaseq-frontend
+  ports:
+  - port: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roaseq-frontend
+  namespace: roaseq-staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: roaseq-frontend
+  template:
+    metadata:
+      labels:
+        app: roaseq-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roaseq-api
+  namespace: roaseq-staging
+spec:
+  selector:
+    app: roaseq-api
+  ports:
+  - port: 4000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roaseq-api
+  namespace: roaseq-staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: roaseq-api
+  template:
+    metadata:
+      labels:
+        app: roaseq-api
+    spec:
+      containers:
+      - name: api
+        image: node:22-alpine
+        command: ["sh", "-c", "echo 'Backend placeholder' && sleep 3600"]
+        ports:
+        - containerPort: 4000
+        envFrom:
+        - secretRef:
+            name: roaseq-secrets
+      initContainers:
+      - name: init-db
+        image: postgres:16-alpine
+        command: ['sh', '-c', 'until pg_isready -h postgres -U postgres; do sleep 2; done']
