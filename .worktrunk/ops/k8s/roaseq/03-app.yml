@@ -1,0 +1,170 @@
+---
+# DEV APP Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roaseq-app
+  namespace: roaseq-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roaseq-app
+  template:
+    metadata:
+      labels:
+        app: roaseq-app
+    spec:
+      containers:
+        - name: app
+          image: 192.168.4.25:5000/roaseq:latest
+          ports:
+            - containerPort: 3007
+          envFrom:
+            - secretRef:
+                name: roaseq-secrets
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3007"
+            - name: CORS_ORIGIN
+              value: "https://dev.roaseq.com"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 1000m
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3007
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3007
+            initialDelaySeconds: 30
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roaseq-app
+  namespace: roaseq-dev
+spec:
+  selector:
+    app: roaseq-app
+  ports:
+    - port: 80
+      targetPort: 3007
+  type: NodePort
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: roaseq-web
+  namespace: roaseq-dev
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`dev.roaseq.com`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: roaseq-app
+          port: 80
+---
+# PROD APP Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roaseq-app
+  namespace: roaseq-prod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: roaseq-app
+  template:
+    metadata:
+      labels:
+        app: roaseq-app
+    spec:
+      initContainers:
+        - name: wait-for-postgres
+          image: postgres:16-alpine
+          command: ["sh", "-c", "until pg_isready -h roaseq-postgres -U roaseq; do sleep 2; done"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+      containers:
+        - name: app
+          image: 192.168.4.25:5000/roaseq:latest
+          ports:
+            - containerPort: 3007
+          envFrom:
+            - secretRef:
+                name: roaseq-secrets
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3007"
+            - name: CORS_ORIGIN
+              value: "https://roaseq.antieq.com"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 1000m
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3007
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3007
+            initialDelaySeconds: 30
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roaseq-app
+  namespace: roaseq-prod
+spec:
+  selector:
+    app: roaseq-app
+  ports:
+    - port: 80
+      targetPort: 3007
+  type: NodePort
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: roaseq-web
+  namespace: roaseq-prod
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    secretName: roaseq-tls
+  routes:
+    - match: Host(`roaseq.antieq.com`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: roaseq-app
+          port: 80

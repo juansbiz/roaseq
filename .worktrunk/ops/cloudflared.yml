@@ -1,0 +1,128 @@
+edgeIpVersion: 4
+tunnel: c72aef40-582a-4717-accb-83db3677d836
+credentials-file: /etc/cloudflared/business/credentials.json
+no-autoupdate: true
+
+ingress:
+  # GotonDollar.com — main marketing + API
+  - hostname: gotonedollar.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: www.gotonedollar.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: dev.gotonedollar.com
+    service: http://127.0.0.1:5173
+  - hostname: "*.gotonedollar.com"
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+
+  # Internal services — antieq.com
+  - hostname: vsl.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: slsk.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: auth.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: portainer.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: logs.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: metrics.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: crm.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: draw.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: vault.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: postgres.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: ruby.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: git.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: outeq.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: prom.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: jelly.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+
+  # HIFICOPY — hificopy.com domains
+  - hostname: newsletter.hificopy.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: video.hificopy.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: forum.hificopy.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+
+  # Listmonk — central email marketing hub
+  - hostname: listmonk.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: kutt.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: mail.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+
+  # ROASEQ — roaseq.com domains
+  - hostname: dev.roaseq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: roaseq.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+
+  # Catch-all
+  - hostname: content.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - service: http://127.0.0.1:80
