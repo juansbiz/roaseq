@@ -1,6 +1,6 @@
-# Axolop CRM Backend - Docker Setup
+# roaseq CRM Backend - Docker Setup
 
-This directory contains the Docker configuration for running the Axolop CRM backend services.
+This directory contains the Docker configuration for running the roaseq CRM backend services.
 
 ## Architecture
 
