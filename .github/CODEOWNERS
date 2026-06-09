@@ -1,0 +1,38 @@
+# CODEOWNERS
+# This file configures GitHub's PR auto-assignment. Any PR that touches
+# files matching a pattern below will auto-request a review from the
+# specified owner(s).
+#
+# Format: pattern @owner [@owner ...]
+# Pattern syntax is the same as .gitignore. Last match wins, so put more
+# specific patterns at the bottom.
+#
+# Reference: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything
+* @juansbiz
+
+# Worktree-specific owners (when a future team exists, add them here)
+# For now, everything routes to @juansbiz (sole maintainer).
+
+# Critical files — force explicit review even if a co-owner exists later
+/LICENSE @juansbiz
+/SECURITY.md @juansbiz
+/CODE_OF_CONDUCT.md @juansbiz
+/CONTRIBUTING.md @juansbiz
+/.github/CODEOWNERS @juansbiz
+
+# Worktree-trunk files
+/package.json @juansbiz
+/vite.config.js @juansbiz
+/docker/ @juansbiz
+/.github/workflows/ @juansbiz
+
+# Frontend worktree
+/.worktrunk/frontend/ @juansbiz
+
+# Backend worktree
+/.worktrunk/backend/ @juansbiz
+
+# Ops worktree
+/.worktrunk/ops/ @juansbiz
