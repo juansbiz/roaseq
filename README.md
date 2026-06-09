@@ -7,6 +7,13 @@
 
 [⭐ Star on GitHub](https://github.com/juansbiz/roaseq) &nbsp;·&nbsp; [📖 Docs](./docs) &nbsp;·&nbsp; [🐛 Report a bug](https://github.com/juansbiz/roaseq/issues) &nbsp;·&nbsp; [🐦 @juansbizz](https://twitter.com/juansbizz)
 
+[![GitHub stars](https://img.shields.io/github/stars/juansbiz/roaseq?style=flat-square&logo=github&color=ffd400)](https://github.com/juansbiz/roaseq/stargazers)
+[![GitHub license](https://img.shields.io/github/license/juansbiz/roaseq?style=flat-square&color=blue)](https://github.com/juansbiz/roaseq/blob/main/LICENSE)
+[![AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-orange?style=flat-square)](https://opensource.org/licenses/AGPL-3.0)
+[![Codeberg mirror](https://img.shields.io/badge/Codeberg-mirror-2185d0?style=flat-square&logo=codeberg&logoColor=white)](https://codeberg.org/juansbiz/roaseq)
+[![Last commit](https://img.shields.io/github/last-commit/juansbiz/roaseq?style=flat-square&color=success)](https://github.com/juansbiz/roaseq/commits/main)
+[![Forgejo canonical](https://img.shields.io/badge/canonical-Forgejo-2d7f5e?style=flat-square&logo=forgejo&logoColor=white)](#why-foss)
+
 </div>
 
 ---
