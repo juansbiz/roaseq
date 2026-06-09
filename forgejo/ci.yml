@@ -2,36 +2,51 @@ name: CI
 
 on:
   push:
-    branches: [staging, releases, main, hotfix/*]
+    branches:
+      - main
+      - staging
+      - releases
+      - hotfix/*
   pull_request:
-    branches: [staging, releases, main]
+    branches:
+      - main
+      - staging
 
 env:
   APP_NAME: roaseq
-  REGISTRY: registry.antieq.com
+  REGISTRY: 100.111.250.71:5000
+  # Per-branch images: registry/roaseq:staging, :releases, :main
+  # Hetzner k3s registry is reachable via Tailscale from CI runners.
 
 jobs:
   lint-frontend:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .worktrunk/frontend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: .worktrunk/frontend/package-lock.json
       - run: npm ci
       - run: npm run lint
+      - run: npm run ts:check
 
   lint-backend:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .worktrunk/backend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: backend/package-lock.json
+          cache-dependency-path: .worktrunk/backend/package-lock.json
       - run: npm ci
       - run: npm run ts:check
 
@@ -46,15 +61,21 @@ jobs:
         run: |
           TAG=$(echo ${{ github.ref }} | sed 's/refs\/heads\///' | sed 's/\//-/g')
           echo "tags=${{ env.REGISTRY }}/${{ env.APP_NAME }}:$TAG" >> $GITHUB_OUTPUT
+          echo "tags=${{ env.REGISTRY }}/${{ env.APP_NAME }}:latest" >> $GITHUB_OUTPUT
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build
-        run: |
-          docker build -t ${{ steps.meta.outputs.tags }} .
-      - name: Push to registry
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: ${{ steps.meta.outputs.tags }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Push to Hetzner registry (Tailscale)
         run: |
           echo ${{ secrets.REGISTRY_PASSWORD }} | docker login ${{ env.REGISTRY }} -u ${{ secrets.REGISTRY_USER }} --password-stdin
-          docker push ${{ steps.meta.outputs.tags }}
+          docker push --all-tags ${{ env.REGISTRY }}/${{ env.APP_NAME }}
 
   deploy-staging:
     runs-on: ubuntu-latest
@@ -62,10 +83,20 @@ jobs:
     if: github.ref == 'refs/heads/staging'
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy to staging
+      - name: Set up Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+      - uses: azure/setup-kubectl@v4
+      - name: Configure homelab kubeconfig
         run: |
-          kubectl set image deployment/${{ env.APP_NAME }} ${{ env.APP_NAME }}=${{ env.REGISTRY }}/${{ env.APP_NAME }}:staging -n ${{ env.APP_NAME }}-staging
-          kubectl rollout status deployment/${{ env.APP_NAME }} -n ${{ env.APP_NAME }}-staging --timeout=300s
+          echo "${{ secrets.KUBECONFIG_DEV }}" | base64 -d > $KUBECONFIG
+          chmod 600 $KUBECONFIG
+      - name: Deploy to roaseq-staging
+        run: |
+          kubectl set image deployment/${{ env.APP_NAME }} ${{ env.APP_NAME }}=${{ env.REGISTRY }}/${{ env.APP_NAME }}:staging -n roaseq-staging
+          kubectl rollout status deployment/${{ env.APP_NAME }} -n roaseq-staging --timeout=300s
 
   deploy-releases:
     runs-on: ubuntu-latest
@@ -73,18 +104,39 @@ jobs:
     if: github.ref == 'refs/heads/releases'
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy to releases
+      - name: Set up Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+      - uses: azure/setup-kubectl@v4
+      - name: Configure homelab kubeconfig
         run: |
-          kubectl set image deployment/${{ env.APP_NAME }} ${{ env.APP_NAME }}=${{ env.REGISTRY }}/${{ env.APP_NAME }}:releases -n ${{ env.APP_NAME }}-releases
-          kubectl rollout status deployment/${{ env.APP_NAME }} -n ${{ env.APP_NAME }}-releases --timeout=300s
+          echo "${{ secrets.KUBECONFIG_DEV }}" | base64 -d > $KUBECONFIG
+          chmod 600 $KUBECONFIG
+      - name: Deploy to roaseq-releases
+        run: |
+          kubectl set image deployment/${{ env.APP_NAME }} ${{ env.APP_NAME }}=${{ env.REGISTRY }}/${{ env.APP_NAME }}:releases -n roaseq-releases
+          kubectl rollout status deployment/${{ env.APP_NAME }} -n roaseq-releases --timeout=300s
 
   deploy-prod:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main'
+    environment: production
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy to production
+      - name: Set up Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+      - uses: azure/setup-kubectl@v4
+      - name: Configure Hetzner kubeconfig
         run: |
-          kubectl set image deployment/${{ env.APP_NAME }} ${{ env.APP_NAME }}=${{ env.REGISTRY }}/${{ env.APP_NAME }}:latest -n ${{ env.APP_NAME }}
-          kubectl rollout status deployment/${{ env.APP_NAME }} -n ${{ env.APP_NAME }} --timeout=300s
+          echo "${{ secrets.VPS_KUBECONFIG }}" | base64 -d > $KUBECONFIG
+          chmod 600 $KUBECONFIG
+      - name: Deploy to Hetzner production
+        run: |
+          kubectl set image deployment/${{ env.APP_NAME }} ${{ env.APP_NAME }}=${{ env.REGISTRY }}/${{ env.APP_NAME }}:main -n roaseq
+          kubectl rollout status deployment/${{ env.APP_NAME }} -n roaseq --timeout=300s

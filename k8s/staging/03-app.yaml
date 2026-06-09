@@ -1,0 +1,124 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roaseq-app
+  namespace: roaseq-staging
+  labels:
+    app: roaseq-app
+    env: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roaseq-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: roaseq-app
+        env: staging
+    spec:
+      containers:
+        - name: app
+          image: 192.168.4.25:5000/roaseq:staging
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3007
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3007"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: DATABASE_URL
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: REDIS_URL
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: JWT_SECRET
+            - name: STRIPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: STRIPE_SECRET_KEY
+            - name: STRIPE_WEBHOOK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: STRIPE_WEBHOOK_SECRET
+            - name: API_URL
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: API_URL
+            - name: FRONTEND_URL
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: FRONTEND_URL
+            - name: CORS_ORIGIN
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: CORS_ORIGIN
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3007
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3007
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 200Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roaseq-app
+  namespace: roaseq-staging
+spec:
+  selector:
+    app: roaseq-app
+  ports:
+    - port: 80
+      targetPort: 3007
+  type: NodePort
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: roaseq-staging-web
+  namespace: roaseq-staging
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`staging.roaseq.com`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: roaseq-app
+          port: 80

@@ -1,0 +1,33 @@
+http:
+  routers:
+    roaseq-dev-router:
+      rule: "Host(`dev.roaseq.com`)"
+      entryPoints:
+        - websecure
+      service: roaseq-dev-svc
+      tls: {}
+    roaseq-staging-router:
+      rule: "Host(`staging.roaseq.com`)"
+      entryPoints:
+        - websecure
+      service: roaseq-staging-svc
+      tls: {}
+    roaseq-releases-router:
+      rule: "Host(`releases.roaseq.com`)"
+      entryPoints:
+        - websecure
+      service: roaseq-releases-svc
+      tls: {}
+  services:
+    roaseq-dev-svc:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.4.25:32280"
+    roaseq-staging-svc:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.4.25:30593"
+    roaseq-releases-svc:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.4.25:30782"

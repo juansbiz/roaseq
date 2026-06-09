@@ -1,0 +1,80 @@
+---
+# ROASEQ production deployment on VPS k3s
+# Image built locally and pushed to VPS registry (100.111.250.71:5000/roaseq:latest)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roaseq-app
+  namespace: roaseq
+  labels:
+    app: roaseq-app
+    env: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roaseq-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: roaseq-app
+    spec:
+      initContainers:
+        - name: wait-for-postgres
+          image: postgres:16-alpine
+          command: ["sh", "-c", "until pg_isready -h roaseq-postgres -U roaseq; do sleep 2; done"]
+          resources:
+            requests:
+              cpu: 25m
+              memory: 32Mi
+            limits:
+              cpu: 50m
+              memory: 64Mi
+      containers:
+        - name: app
+          image: 100.111.250.71:5000/roaseq:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3007
+          envFrom:
+            - configMapRef:
+                name: roaseq-config
+            - secretRef:
+                name: roaseq-secrets
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3007
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3007
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 200Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roaseq-app
+  namespace: roaseq
+spec:
+  type: ClusterIP
+  selector:
+    app: roaseq-app
+  ports:
+  - port: 3007
+    targetPort: 3007

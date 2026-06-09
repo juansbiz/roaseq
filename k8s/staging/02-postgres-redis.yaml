@@ -1,0 +1,99 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: roaseq-postgres-pvc
+  namespace: roaseq-staging
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: roaseq-postgres
+  namespace: roaseq-staging
+spec:
+  serviceName: roaseq-postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roaseq-postgres
+  template:
+    metadata:
+      labels:
+        app: roaseq-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          env:
+            - name: POSTGRES_DB
+              value: roaseq
+            - name: POSTGRES_USER
+              value: roaseq
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: POSTGRES_PASSWORD
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: roaseq-secrets
+                  key: POSTGRES_PASSWORD
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: pg-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: pg-storage
+          persistentVolumeClaim:
+            claimName: roaseq-postgres-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roaseq-postgres
+  namespace: roaseq-staging
+spec:
+  clusterIP: None
+  selector:
+    app: roaseq-postgres
+  ports:
+    - port: 5432
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roaseq-redis
+  namespace: roaseq-staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roaseq-redis
+  template:
+    metadata:
+      labels:
+        app: roaseq-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          ports:
+            - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roaseq-redis
+  namespace: roaseq-staging
+spec:
+  selector:
+    app: roaseq-redis
+  ports:
+    - port: 6379
