@@ -12,7 +12,7 @@ export default {
     },
     extend: {
       colors: {
-        // HIFICOPY Unified Branding — INBOXEQ reference
+        // ROASEQ brand palette — yellow accent on dark
         // Primary BG / Headers / Footers
         black: {
           DEFAULT: "#101010",
