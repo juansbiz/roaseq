@@ -1,7 +1,34 @@
 {
-  "name": "roaseq-crm",
+  "name": "roaseq",
   "version": "1.2.0",
-  "description": "ROASEQ CRM - The New Age CRM with Local AI Second Brain. Replaces GoHighLevel, ClickUp, Notion, Miro, iClosed, and 10+ tools for agency owners.",
+  "description": "Open-source ecommerce attribution platform. The FOSS alternative to Triple Whale. Multi-touch attribution, channel ROI, journey stitching. Your events, your models, your database.",
+  "license": "AGPL-3.0",
+  "author": {
+    "name": "Juan (juansbiz)",
+    "email": "juan@hificopy.com",
+    "url": "https://github.com/juansbiz"
+  },
+  "homepage": "https://github.com/juansbiz/roaseq",
+  "repository": {
+    "type": "git",
+    "url": "https://git.antieq.com/juansbiz/roaseq.git"
+  },
+  "bugs": {
+    "url": "https://github.com/juansbiz/roaseq/issues",
+    "email": "juan@hificopy.com"
+  },
+  "keywords": [
+    "ecommerce",
+    "attribution",
+    "multi-touch",
+    "triple-whale-alternative",
+    "foss",
+    "agpl",
+    "self-hosted",
+    "postgresql",
+    "typescript",
+    "react"
+  ],
   "type": "module",
   "scripts": {
     "postinstall": "npx -y npm-force-resolutions",
@@ -29,10 +56,10 @@
     "pre-commit": "npm run check-typos && npm run validate:config && npm run translations:validate",
     "start": "node src/backend/index.js",
     "pm2:start": "pm2 start ecosystem.config.js --env production",
-    "pm2:stop": "pm2 stop roaseq-crm",
-    "pm2:restart": "pm2 restart roaseq-crm",
-    "pm2:logs": "pm2 logs roaseq-crm",
-    "pm2:delete": "pm2 delete roaseq-crm",
+    "pm2:stop": "pm2 stop roaseq",
+    "pm2:restart": "pm2 restart roaseq",
+    "pm2:logs": "pm2 logs roaseq",
+    "pm2:delete": "pm2 delete roaseq",
     "check": "npm run lint && npm run build",
     "lint": "eslint \"frontend/**/*.{js,jsx,ts,tsx}\" --max-warnings=0",
     "format": "prettier -w .",
@@ -80,25 +107,17 @@
     "docker:restart": "npm run docker:down && npm run docker:up"
   },
   "keywords": [
-    "crm",
-    "roaseq",
-    "hubspot",
-    "sales",
-    "email-marketing",
-    "automation",
-    "ecommerce",
-    "b2b",
-    "real-estate",
-    "typeform",
-    "jotform",
-    "funnels",
-    "manychat",
-    "active-campaign",
-    "klaviyo",
-    "beehive"
+    "attribution",
+    "multi-touch",
+    "triple-whale-alternative",
+    "foss",
+    "agpl",
+    "self-hosted",
+    "postgresql",
+    "typescript",
+    "react",
+    "ecommerce"
   ],
-  "author": "ROASEQ LLC",
-  "license": "PROPRIETARY",
   "dependencies": {
     "@aws-sdk/client-ses": "^3.679.0",
     "@dnd-kit/core": "^6.3.1",

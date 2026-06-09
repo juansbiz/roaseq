@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => {
       process.env.SENTRY_AUTH_TOKEN &&
       sentryVitePlugin({
         org: process.env.SENTRY_ORG || "hificopy-llc",
-        project: process.env.SENTRY_PROJECT || "roaseq-crm-frontend",
+        project: process.env.SENTRY_PROJECT || "roaseq-frontend",
         authToken: process.env.SENTRY_AUTH_TOKEN,
 
         // Upload source maps to Sentry
@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
 
         // Release configuration
         release: {
-          name: `roaseq-crm-frontend@${process.env.npm_package_version || "1.2.0"}`,
+          name: `roaseq-frontend@${process.env.npm_package_version || "1.2.0"}`,
           cleanArtifacts: true, // Delete maps after upload
           finalize: true, // Mark release as deployed
         },
