@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# ROASEQ CRM - Docker Backend Stop Script
+# ROASEQ - Docker Backend Stop Script
 # ==============================================================================
 # Gracefully stops roaseq-backend and roaseq-redis containers.
 # ==============================================================================
@@ -11,7 +11,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-echo -e "${GREEN}=== Stopping ROASEQ CRM Docker Backend ===${NC}"
+echo -e "${GREEN}=== Stopping ROASEQ Docker Backend ===${NC}"
 
 cd docker/backend
 

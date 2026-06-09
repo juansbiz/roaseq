@@ -5,13 +5,13 @@ import { useSafeSubdomain } from "@/context/SubdomainContext";
 import SubdomainAccessDenied from "./SubdomainAccessDenied";
 
 // God mode emails: configured via VITE_GOD_EMAILS env var (comma-separated), with hardcoded fallback
-const GOD_EMAILS = (import.meta.env.VITE_GOD_EMAILS || "roaseqcrm@gmail.com,kate@kateviolet.com")
+const GOD_EMAILS = (import.meta.env.VITE_GOD_EMAILS || "roaseq@gmail.com,kate@kateviolet.com")
   .split(",")
   .map((e) => e.trim())
   .filter(Boolean);
 
-// B2B Admin - only roaseqcrm@gmail.com has B2B access
-const B2B_ADMIN_EMAIL = "roaseqcrm@gmail.com";
+// B2B Admin - only roaseq@gmail.com has B2B access
+const B2B_ADMIN_EMAIL = "roaseq@gmail.com";
 
 // SECURITY: Explicit subscription status whitelists
 const ALLOWED_STATUSES = ["active", "trialing", "past_due"];

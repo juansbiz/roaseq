@@ -1,5 +1,5 @@
 /**
- * Jest Configuration for ROASEQ CRM
+ * Jest Configuration for ROASEQ
  *
  * Supports both frontend (jsdom) and backend (node) tests
  */

@@ -1,6 +1,6 @@
-# ROASEQ CRM Backend - Docker Setup
+# ROASEQ Backend - Docker Setup
 
-This directory contains the Docker configuration for running the ROASEQ CRM backend services.
+This directory contains the Docker configuration for running the ROASEQ backend services.
 
 ## Architecture
 

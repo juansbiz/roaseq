@@ -1,6 +1,6 @@
 # Common Utilities
 
-Centralized, reusable utilities for ROASEQ CRM.
+Centralized, reusable utilities for ROASEQ.
 
 ## Overview
 
@@ -379,4 +379,4 @@ For questions or issues:
 
 ## License
 
-Part of ROASEQ CRM - Internal use only.
+Part of ROASEQ - Internal use only.

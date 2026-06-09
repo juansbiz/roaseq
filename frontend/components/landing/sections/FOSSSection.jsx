@@ -32,7 +32,7 @@ const FOSSSection = () => {
             <span className="text-gray-400">And compliant.</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Stop renting your CRM. Own your data, your AI, and your future.
+            Stop renting your attribution data. Own your events, your models, and your future.
           </p>
         </div>
 

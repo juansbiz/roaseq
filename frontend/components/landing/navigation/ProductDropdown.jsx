@@ -45,7 +45,7 @@ import {
 const PRODUCT_CATEGORIES = {
   customers: {
     title: "Customers Space",
-    subtitle: "Complete CRM for Ecommerce",
+    subtitle: "Complete Attribution for Ecommerce",
     icon: Users,
     color: "red",
     items: [
@@ -217,7 +217,7 @@ const ProductDropdown = ({
   const handleContextMenu = useRightClick(contextMenuItems);
   const handleLongPress = useLongPress(contextMenuItems);
 
-  // 3 Spaces for B2C Ecommerce CRM
+  // 3 Spaces for B2C Ecommerce Attribution
   const allSpaces = [
     { ...PRODUCT_CATEGORIES.customers, key: "customers" },
     { ...PRODUCT_CATEGORIES.marketing, key: "marketing" },
@@ -356,7 +356,7 @@ const ProductDropdown = ({
                     {[
                       {
                         name: "Ecommerce Stores",
-                        desc: "Replace Klaviyo & expensive CRMs",
+                        desc: "Replace Triple Whale, Northbeam, and other expensive attribution platforms",
                         href: "/use-cases/ecommerce",
                         icon: Users,
                       },

@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 /**
- * Product organized by 3 Spaces (mobile version) - B2C Ecommerce CRM
+ * Product organized by 3 Spaces (mobile version) - B2C Ecommerce Attribution
  */
 const PRODUCT_CATEGORIES = [
   {

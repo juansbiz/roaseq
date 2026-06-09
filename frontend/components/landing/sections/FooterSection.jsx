@@ -27,7 +27,7 @@ const FOOTER_LINKS = {
   developers: {
     title: "Developers",
     links: [
-        { name: "GitHub", href: "https://github.com/juansbiz/roaseqcrm", external: true },
+        { name: "GitHub", href: "https://github.com/juansbiz/roaseq", external: true },
       { name: "Self-Host Guide", href: "/docs/self-host" },
       { name: "API Reference", href: "/docs/api" },
       { name: "Changelog", href: "/changelog" },
@@ -66,20 +66,20 @@ const FOOTER_LINKS = {
  * Social media links
  */
 const SOCIAL_LINKS = [
-  { name: "GitHub", href: "https://github.com/juansbiz/roaseqcrm", icon: Github },
-  { name: "Twitter", href: "https://twitter.com/roaseqcrm", icon: Twitter },
+  { name: "GitHub", href: "https://github.com/juansbiz/roaseq", icon: Github },
+  { name: "Twitter", href: "https://twitter.com/juansbizz", icon: Twitter },
   {
     name: "LinkedIn",
     href: "https://linkedin.com/company/roaseq",
     icon: Linkedin,
   },
-  { name: "YouTube", href: "https://youtube.com/@roaseqcrm", icon: Youtube },
+  { name: "YouTube", href: "https://youtube.com/@juansbiz", icon: Youtube },
   {
     name: "Instagram",
-    href: "https://instagram.com/roaseqcrm",
+    href: "https://instagram.com/juansbiz",
     icon: Instagram,
   },
-  { name: "Facebook", href: "https://facebook.com/roaseqcrm", icon: Facebook },
+  { name: "Facebook", href: "https://facebook.com/juansbiz", icon: Facebook },
 ];
 
 // ROASEQ Logo Image
@@ -119,7 +119,7 @@ const FooterSection = ({ className }) => {
     developers: {
       title: "Developers",
       links: [
-      { name: "GitHub", href: "https://github.com/juansbiz/roaseqcrm", external: true },
+      { name: "GitHub", href: "https://github.com/juansbiz/roaseq", external: true },
         { name: "Self-Host Guide", href: "/docs/self-host" },
         { name: "API Reference", href: "/docs/api" },
         { name: "Changelog", href: "/changelog" },
@@ -173,7 +173,7 @@ const FooterSection = ({ className }) => {
               <span className="text-xl font-bold text-white">ROASEQ</span>
             </Link>
             <p className="text-sm text-gray-400 mb-4">
-              The open source B2C CRM for ecommerce. Replace Klaviyo, own your data, save money every month.
+              The open source ecommerce attribution platform. Replace Triple Whale, own your events, run your own models.
             </p>
             {/* Social links */}
             <div className="flex gap-3">

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Import Validation Script for ROASEQ CRM
+ * Import Validation Script for ROASEQ
  *
  * Checks for common import errors:
  * - Imports from non-existent files
@@ -40,7 +40,7 @@ const FORBIDDEN_IMPORTS = [
 let errorCount = 0;
 let warningCount = 0;
 
-console.log('🔍 Validating imports in ROASEQ CRM...\n');
+console.log('🔍 Validating imports in ROASEQ...\n');
 
 // Get all JS/JSX files
 const files = glob.sync('frontend/**/*.{js,jsx}', {

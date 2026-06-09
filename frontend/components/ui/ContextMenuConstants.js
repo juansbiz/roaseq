@@ -1,7 +1,7 @@
 /**
  * Context Menu Design System Constants
  *
- * CRITICAL: These constants ensure EVERY menu in ROASEQ CRM looks and feels identical.
+ * CRITICAL: These constants ensure EVERY menu in ROASEQ looks and feels identical.
  * Never deviate from these values unless updating the entire design system.
  */
 

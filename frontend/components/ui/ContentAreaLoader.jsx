@@ -27,7 +27,7 @@ export const ContentAreaLoader = ({ message = 'Loading...' }) => {
           <div className="absolute inset-0 flex items-center justify-center">
             <img
               src="/roaseq-logo.webp"
-              alt="ROASEQ CRM"
+              alt="ROASEQ"
               className="w-8 h-8 object-contain"
             />
           </div>

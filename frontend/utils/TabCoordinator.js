@@ -1,5 +1,5 @@
 /**
- * 🚀 ROASEQ CRM - TAB COORDINATOR
+ * 🚀 ROASEQ - TAB COORDINATOR
  *
  * Prevents conflicts between multiple browser tabs by implementing:
  * - Master tab election system with atomic operations

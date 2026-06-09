@@ -25,7 +25,7 @@ const VideoTestimonialsGrid = ({ className }) => {
       title: "Store Owner",
       company: "DTC Brand",
       quote:
-        "Finally a CRM that doesn't charge more as you grow. Self-hosted and free forever. Game changer.",
+        "Finally an attribution platform that doesn't charge more as you grow. Self-hosted and free forever. Game changer.",
       thumbnail: null,
       platform: "youtube",
       avatar: null,
@@ -60,7 +60,7 @@ const VideoTestimonialsGrid = ({ className }) => {
       title: "DTC Founder",
       company: "Elevate Brand",
       quote:
-        "Self-hosted for free. Connect my own AI. This is what CRM should be.",
+        "Self-hosted for free. Connect my own AI. This is what attribution should be.",
       rating: 5,
       avatar: null,
     },

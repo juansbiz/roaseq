@@ -2,7 +2,7 @@
  * Subdomain Detection Utilities
  *
  * Provides utilities for detecting, validating, and managing subdomains
- * in the ROASEQ CRM multi-tenant architecture.
+ * in the ROASEQ multi-tenant architecture.
  */
 
 // Reserved subdomains that cannot be used by agencies

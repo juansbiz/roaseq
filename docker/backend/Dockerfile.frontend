@@ -1,4 +1,4 @@
-# ROASEQ CRM Frontend Dockerfile
+# ROASEQ Frontend Dockerfile
 # Build and serve frontend static files
 
 # Stage 1: Builder

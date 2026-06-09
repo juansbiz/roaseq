@@ -201,7 +201,7 @@ const OptimizedFeatureCard = ({ feature, FeatureIcon, styles }) => {
  * Uses intersection observer for better scroll performance
  */
 const FeatureShowcaseSection = ({ className }) => {
-  // 3 Spaces that replace expensive tools - B2C Ecommerce CRM
+  // 3 Spaces that replace expensive attribution tools - B2C Ecommerce Attribution
   const FEATURES = [
     {
       id: "email-marketing",
@@ -379,7 +379,7 @@ const FeatureShowcaseSection = ({ className }) => {
                   filter: "drop-shadow(0px 1px 2px rgba(0,0,0,0.3))",
                 }}
               >
-                Experience New Age CRM
+                Experience New Age Attribution
               </span>
               <ArrowRight
                 className="w-5 h-5 relative z-10"

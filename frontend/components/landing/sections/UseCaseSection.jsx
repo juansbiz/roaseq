@@ -114,8 +114,8 @@ const UseCaseSection = ({ className }) => {
       id: "ecommerce-stores",
       industry: "Ecommerce Stores",
       challenge:
-        "Pay $60-700/month to Klaviyo/Omnisend but stuck with closed-source limitations",
-      solution: "Free open-source CRM with total control over your data and AI",
+        "Pay $179-749/month to Triple Whale but stuck with closed-source limitations",
+      solution: "Free open-source attribution with total control over your events and models",
       result: "Save $500+/month",
       resultDetail: "and own your customer data forever",
       color: "red",
@@ -139,8 +139,8 @@ const UseCaseSection = ({ className }) => {
       id: "dtc-brands",
       industry: "DTC Brands",
       challenge:
-        "Vendor lock-in from expensive CRMs that charge more as you grow",
-      solution: "Self-hostable CRM that stays flat priced forever",
+        "Vendor lock-in from closed-source attribution platforms that charge more as you scale",
+      solution: "Self-hostable attribution that stays flat priced forever",
       result: "Flat pricing",
       resultDetail: "no matter how big you grow",
       color: "teal",
@@ -163,9 +163,9 @@ const UseCaseSection = ({ className }) => {
     {
       id: "new-founders",
       industry: "New Founders",
-      challenge: "Starting an ecommerce brand and don't know which CRM to pick",
+      challenge: "Starting an ecommerce brand and don't know which attribution tool to pick",
       solution:
-        "Start free with ROASEQ. No monthly fees, own your data, scale forever.",
+        "Start free with ROASEQ. No monthly fees, own your events, run your own models.",
       result: "Start for free",
       resultDetail: "no strings attached",
       color: "amber",

@@ -62,7 +62,7 @@ const WallOfLoveSection = ({ className }) => {
       id: 9,
       name: "Daniel Wright",
       title: "Tech Founder",
-      quote: "Finally a CRM with a modern tech stack. The API is a dream.",
+      quote: "Finally an attribution platform with a modern tech stack. The API is a dream.",
     },
     {
       id: 10,

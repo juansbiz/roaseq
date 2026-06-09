@@ -1,7 +1,7 @@
 /**
  * 🔍 AUTH DEBUGGER UTILITY
  *
- * Debug utility for troubleshooting authentication issues in ROASEQ CRM.
+ * Debug utility for troubleshooting authentication issues in ROASEQ.
  * Usage: Open browser console (F12) and run `window.debugAuth()`
  *
  * This utility provides comprehensive diagnostic information about:

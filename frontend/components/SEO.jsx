@@ -89,7 +89,7 @@ const SEO = ({
       <meta name="twitter:description" content={seoDescription} />
       <meta name="twitter:image" content={twitterImage} />
       <meta name="twitter:image:alt" content="ROASEQ - All-in-One Business Platform" />
-      <meta name="twitter:site" content="@roaseqcrm" />
+      <meta name="twitter:site" content="@roaseq" />
       
       {/* Canonical URL */}
       <link rel="canonical" href={url} />
