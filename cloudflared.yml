@@ -1,53 +1,46 @@
+edgeIpVersion: 4
 tunnel: c72aef40-582a-4717-accb-83db3677d836
 credentials-file: /etc/cloudflared/business/credentials.json
 no-autoupdate: true
 
 ingress:
-  # NOTE (2026-06-08): *.gotonedollar.com hostnames moved off this tunnel
-  # (business-apps-mac-homelab) per INFRASTRUCTURE-RULES.md §2.
-  #   - gotonedollar.com, www.gotonedollar.com → vps-mainproduction (Hetzner)
-  #   - dev/staging/releases.gotonedollar.com   → dev-apps-mac-homelab (homelab)
-  # Other *.gotonedollar.com decommissioned subdomains (app/links/cal/webhook/
-  # matrix/booking) had DNS records deleted 2026-06-08 PM.
-  # See NAVENA_CODE/.worktrunk/ops/cloudflared.yml for the dev/staging/releases rules.
-  #
-  # Business-backends *.gotonedollar.com (NOT dev apps, NOT user-facing
-  # customer apps — these are infrastructure backends like Mautic, Listmonk,
-  # Twenty CRM, etc. that the business depends on):
-  #   - newsletter.gotonedollar.com → Listmonk admin (homelab docker :9010)
-  #     Routed via host Traefik per /etc/traefik/dynamic/community-stack.yml
-  #     (newsletter-router → listmonk-service).
-  #   - community.gotonedollar.com  → off-tunnel (Circle workspace, at Namecheap)
-  # See INFRASTRUCTURE-RULES.md §1 for the rule.
-
-  # Newsletter (Listmonk admin) — DTCEQ marketing backend
-  - hostname: newsletter.gotonedollar.com
+  # GotonDollar.com — main marketing + API
+  - hostname: gotonedollar.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: www.gotonedollar.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: dev.gotonedollar.com
+    service: http://127.0.0.1:5173
+  - hostname: "*.gotonedollar.com"
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
 
-  # Jellyfin VSL Video Server — vsl.antieq.com → Jellyfin :8096
+  # Internal services — antieq.com
   - hostname: vsl.antieq.com
-    service: http://127.0.0.1:8096
-
-  # slskd WebUI
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
   - hostname: slsk.antieq.com
-    service: http://127.0.0.1:5030
-
-  # Auth (bypass auth)
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
   - hostname: auth.antieq.com
-    service: http://127.0.0.1:9091
-  # InboxEQ auth portal — separate hostname
-  - hostname: auth.inboxeq.com
-    service: http://127.0.0.1:9091
-
-  # Protected apps via Traefik (Authelia-gated)
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
   - hostname: portainer.antieq.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
   - hostname: logs.antieq.com
-    service: http://127.0.0.1:8085
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
   - hostname: metrics.antieq.com
     service: https://[::1]:443
     originRequest:
@@ -61,38 +54,44 @@ ingress:
     originRequest:
       noTLSVerify: true
   - hostname: vault.antieq.com
-    service: http://127.0.0.1:8082
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
   - hostname: postgres.antieq.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
-
-  # Git (Forgejo - direct to port 3300)
-  - hostname: git.antieq.com
-    service: http://127.0.0.1:3300
+  - hostname: ruby.antieq.com
+    service: https://[::1]:443
     originRequest:
       noTLSVerify: true
-
-  # RubyOutreach → Traefik → Gunicorn/Django
+  - hostname: git.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
   - hostname: outeq.antieq.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
-
-  # Prometheus → Traefik → Prometheus:9090
   - hostname: prom.antieq.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
-
-  # HIFICOPY Forum — Traefik → Discourse (port 4080)
-  - hostname: forum.hificopy.com
+  - hostname: jelly.antieq.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
 
-  # HIFICOPY Newsletter — Traefik → Listmonk (port 9010)
+  # HIFICOPY — hificopy.com domains
   - hostname: newsletter.hificopy.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: video.hificopy.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - hostname: forum.hificopy.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
@@ -102,55 +101,25 @@ ingress:
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
-
-  # Kutt — internal URL shortener
   - hostname: kutt.antieq.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
-
-  # Mautic — Traefik → Mautic (B2C CRM, k3s navena-mautic)
-  # Canonical target per INFRASTRUCTURE-RULES.md §3.3. Must stay on this tunnel.
-  - hostname: mautic.antieq.com
-    service: https://[::1]:443
-    originRequest:
-      noTLSVerify: true
-
-  # Mailcow — Hetzner mailcow webmail. The Hetzner VPS is the canonical
-  # home for mailcow (per HETZNER-VPS-MISSION.md). The mailcow HTTPS
-  # port (:18444) is only reachable inside the Hetzner host (docker-proxy
-  # bound to 127.0.0.1) and not exposed to the public internet (Hetzner
-  # cloud firewall blocks 18444). The cloudflared-business tunnel (which
-  # runs on the homelab) cannot reach 167.233.22.167:18444 directly.
-  # Solution: an SSH tunnel from homelab → Hetzner (mailcow-tunnel.service)
-  # exposes mailcow 18444 on homelab 127.0.0.1:18444 over the Tailscale
-  # SSH connection (which works reliably on port 22). cloudflared then
-  # connects to the local 127.0.0.1:18444. The Host header is rewritten
-  # to mail-relay.antieq.com (mailcow's nginx vhost). The cert on 18444
-  # is Let's Encrypt for imap.antieq.com, so noTLSVerify is required.
-  # History (2026-06-09): stub on :8093 → public IP 18444 (firewalled) →
-  # SSH tunnel (permanent).
   - hostname: mail.antieq.com
-    service: https://127.0.0.1:18444
-    originRequest:
-      noTLSVerify: true
-      httpHostHeader: mail-relay.antieq.com
-
-  # Traefik dashboard — 503 placeholder (dashboard returns 308 redirect loop)
-  - hostname: traefik.antieq.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
 
-  # Cal.diy — INBOXEQ scheduling (direct to caldiy container :3084)
-  # 2026-06-08 deployment — see /opt/caldiy/ and 6. OPERATIONS/CAL-DIY-SETUP.md
-  - hostname: cal.antieq.com
-    service: http://127.0.0.1:3084
-
-  # Ruby — Traefik → OutreachEQ (legacy alias for outeq.antieq.com).
-  - hostname: dev.roaseq.com
+  # ROASEQ — roaseq.antieq.com (business antieq.com zone, stays on business tunnel)
+  # 2026-06-09: dev.roaseq.com moved to dev-apps-mac-homelab tunnel per 5. CONTEXT/skills/git-workflow.md §2.4
+  - hostname: roaseq.antieq.com
     service: https://[::1]:443
     originRequest:
       noTLSVerify: true
+
   # Catch-all
-  - service: http_status:404
+  - hostname: content.antieq.com
+    service: https://[::1]:443
+    originRequest:
+      noTLSVerify: true
+  - service: http://127.0.0.1:80
