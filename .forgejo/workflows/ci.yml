@@ -1,0 +1,68 @@
+name: CI
+on:
+  push:
+    branches: [main, releases, hotfix/*]
+  pull_request:
+    branches: [main, releases]
+
+jobs:
+  check-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ci/policy — Check for cloud repo references (immersion rule)
+        run: |
+          if grep -r "roaseq-cloud" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist; then
+            echo "ERROR: FOSS repo cannot contain any reference to roaseq-cloud."
+            echo "This is the immersion rule. See Obsidian FOSS-PROJECT-RULES.md."
+            exit 1
+          fi
+
+      - name: ci/policy — Check for cloud upsell strings
+        run: |
+          FORBIDDEN='Sign up at|Upgrade to cloud|Get the cloud version|Hosted version|Managed version|Talk to a human|Talk to sales|Try free|Free trial|Start free trial|20% ad ROI|5% net ROI|20% or it..s free|15% ad ROI|commercial license|for proprietary use|contact us for licensing|git\.antieq\.com|INBOXEQ|YALLY|YALLYTV|NAVENA|ROZ|HIFICOPY|axolop'
+          if grep -rE "$FORBIDDEN" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist; then
+            echo "ERROR: FOSS repo contains forbidden cloud-related strings."
+            exit 1
+          fi
+          echo "ci/policy OK"
+
+  build:
+    runs-on: ubuntu-latest
+    needs: check-policy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run build
+      - name: ci/build
+        run: echo "build OK"
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: check-policy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run lint
+      - name: ci/lint
+        run: echo "lint OK"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: check-policy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm test
+      - name: ci/test
+        run: echo "test OK"
