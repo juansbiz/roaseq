@@ -184,3 +184,4 @@ Use it, fork it, self-host it, modify it. If you run a modified version as a net
 ---
 
 <sub>Your events. Your models. Your database. Open source, forever.</sub>
+// trigger CI Wed Jun 10 05:08:56 PM EDT 2026
