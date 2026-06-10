@@ -9,7 +9,7 @@ Thanks for your interest in ROASEQ, the open-source ecommerce attribution platfo
 - **Issues:** https://github.com/juansbiz/roaseq/issues
 - **Discussions:** https://github.com/juansbiz/roaseq/discussions
 - **Roadmap / v2 / v3 plan:** see [README.md](README.md) and the `#why-foss` section
-- **Security vulnerabilities:** see [SECURITY.md](SECURITY.md) — **do not** file these as public issues
+- **Security vulnerabilities:** see [SECURITY.md](SECURITY.md), **do not** file these as public issues
 - **Code of Conduct:** [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 - **Mirror on Codeberg:** https://codeberg.org/juansbiz/roaseq
 - **Canonical source (Forgejo):** https://git.antieq.com/juansbiz/roaseq
@@ -37,10 +37,10 @@ Before opening a new issue:
 2. **Check the docs.** The [README.md](README.md) has the quick-start, the architecture overview, and the roadmap.
 
 When you do open an issue, pick a template:
-- **🐛 Bug report** — something broke. Include reproduction steps, expected vs actual, screenshots if relevant.
-- **✨ Feature request** — something missing. Describe the use case, not just the solution. "I need to compare Meta vs Google ROAS at the touchpoint level" is better than "Add a comparison widget."
-- **📖 Documentation issue** — README, inline docs, or anything else unclear.
-- **🔒 Security** — see [SECURITY.md](SECURITY.md). Don't file security issues publicly.
+- **🐛 Bug report**, something broke. Include reproduction steps, expected vs actual, screenshots if relevant.
+- **✨ Feature request**, something missing. Describe the use case, not just the solution. "I need to compare Meta vs Google ROAS at the touchpoint level" is better than "Add a comparison widget."
+- **📖 Documentation issue**, README, inline docs, or anything else unclear.
+- **🔒 Security**, see [SECURITY.md](SECURITY.md). Don't file security issues publicly.
 
 For attribution-specific feature requests, include:
 - What attribution model you're using today (last-touch, multi-touch, MMM, data-driven, etc.)
@@ -94,9 +94,9 @@ Examples:
 ### PR review process
 1. **Open the PR** against `main`. Use a clear title and a body that explains the **why**, not just the **what**.
 2. **CI runs automatically** (lint, build, test). All checks must pass before review.
-3. **Maintainer reviews** within ~3 business days. Be patient — ROASEQ is a small project.
+3. **Maintainer reviews** within ~3 business days. Be patient, ROASEQ is a small project.
 4. **Address feedback** by pushing new commits to the same branch. Don't force-push after review starts (it makes review harder).
-5. **Squash on merge** — your commits will be squashed into one with a clean message.
+5. **Squash on merge**, your commits will be squashed into one with a clean message.
 
 ---
 
@@ -110,21 +110,21 @@ git clone https://git.antieq.com/juansbiz/roaseq.git
 cd roaseq
 
 # Three terminals:
-# Terminal 1 — backend
+# Terminal 1, backend
 cd .worktrunk/backend
 npm install
 cp .env.example .env
 npm run dev
 # → backend on http://localhost:3007
 
-# Terminal 2 — frontend
+# Terminal 2, frontend
 cd .worktrunk/frontend
 npm install
 cp .env.example .env
 npm run dev
 # → frontend on http://localhost:3012
 
-# Terminal 3 — ops (only needed for k8s/docker work)
+# Terminal 3, ops (only needed for k8s/docker work)
 cd .worktrunk/ops
 ```
 
@@ -160,9 +160,9 @@ roaseq/
 ├── package.json               # Root: `roaseq`, license AGPL-3.0
 ├── docker/backend/            # Local docker-compose for Postgres + Redis + backend
 ├── .worktrunk/
-│   ├── backend/              # feat/backend branch — Express + TypeScript
-│   ├── frontend/             # feat/frontend branch — React + Vite + Tailwind
-│   └── ops/                  # ops branch — k8s, CI, Docker
+│   ├── backend/              # feat/backend branch, Express + TypeScript
+│   ├── frontend/             # feat/frontend branch, React + Vite + Tailwind
+│   └── ops/                  # ops branch, k8s, CI, Docker
 └── config/                   # Tailwind + PostCSS config
 ```
 
@@ -204,6 +204,6 @@ In short: your code stays FOSS, including for hosted/network use (that's the AGP
 
 ## Maintainer
 
-**Juan (juansbiz)** — juan@hificopy.com
+**Juan (juansbiz)**, juan@hificopy.com
 
 ROASEQ is a one-founder project. Response time on issues and PRs is **best-effort**, usually within a week, sometimes faster.

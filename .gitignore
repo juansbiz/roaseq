@@ -66,4 +66,4 @@ coverage/
 # ===========================================
 *.tgz
 .cache/
-.worktrunk/
+# .worktrunk/ (untracked, see .worktrunk/ops/ for tracked FOSS deployment configs)

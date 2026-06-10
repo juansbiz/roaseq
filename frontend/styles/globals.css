@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  /* HIFICOPY Unified Branding — roaseq
-   * Reference: INBOXEQ design system
+  /* ROASEQ Unified Branding - roaseq
+   * Reference: ROASEQ design system
    * Colors: #101010 (black), #f2ff00 (yellow), #ffffff (white)
    * Fonts: Bebas Neue (headers), Inter (body)
    */
 
-  /* Google Fonts — Unified Typography */
+  /* Google Fonts - Unified Typography */
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-  /* CSS Variables — HIFICOPY Unified Palette */
+  /* CSS Variables - ROASEQ Unified Palette */
   :root {
     --color-black: #101010;
     --color-yellow: #f2ff00;
@@ -53,7 +53,7 @@
     letter-spacing: 0.03em;
   }
 
-  /* Tailwind text utilities — headers */
+  /* Tailwind text utilities - headers */
   .text-2xl,
   .text-3xl,
   .text-4xl,
@@ -76,11 +76,42 @@
     letter-spacing: 0.03em;
   }
 
-  /* Sidebar and navigation — Bebas Neue */
+  /* Sidebar and navigation - Bebas Neue */
   .font-sidebar,
   .font-nav {
     font-family: 'Bebas Neue', 'Inter', -apple-system, sans-serif !important;
     letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  /* Primary CTA - flat yellow, ROASEQ-style */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-[#f2ff00] text-[#101010]
+           font-bold uppercase tracking-wider
+           rounded-lg px-6 py-3
+           transition-transform duration-200
+           hover:scale-105 active:scale-95
+           cursor-pointer;
+  }
+
+  /* Secondary CTA - outline on dark */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-transparent border-2 border-white/20 text-white
+           font-bold uppercase tracking-wider
+           rounded-lg px-6 py-3
+           transition-colors duration-200
+           hover:bg-white/10 hover:border-white
+           cursor-pointer;
+  }
+
+  /* Ghost link - text-only, used inline */
+  .btn-ghost {
+    @apply inline-flex items-center gap-1
+           text-[#f2ff00] hover:text-white
+           font-semibold transition-colors;
   }
 }
 
@@ -95,7 +126,7 @@ body {
   box-sizing: border-box;
 }
 
-/* Scrollbar — HIFICOPY unified */
+/* Scrollbar - ROASEQ unified */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -114,7 +145,7 @@ body {
   background: #e6e600;
 }
 
-/* Selection — HIFICOPY yellow */
+/* Selection - ROASEQ yellow */
 ::selection {
   background: #f2ff00;
   color: #101010;

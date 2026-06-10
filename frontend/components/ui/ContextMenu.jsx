@@ -27,7 +27,7 @@ const getAnimationProps = () => {
 /**
  * Universal Context Menu Component
  * Apple-inspired design with dark mode support, accessibility, and smart actions
- * Works across all CRM pages with context-aware actions
+ * Works across all attribution dashboard pages with context-aware actions
  */
 function ContextMenu({
   children,

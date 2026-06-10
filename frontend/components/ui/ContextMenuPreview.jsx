@@ -2,7 +2,7 @@
  * Context Menu Preview Component
  *
  * Renders a hover preview card beside a menu item.
- * Shows entity info, pipeline stages, email templates, etc.
+ * Shows attribution model journey, event templates, entity info, etc.
  * Positioned like submenus (flip if no space).
  * On mobile: hidden (space constraints).
  */
@@ -11,13 +11,13 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import EntityCardPreview from './previews/EntityCardPreview';
-import PipelinePreview from './previews/PipelinePreview';
-import EmailTemplatePreview from './previews/EmailTemplatePreview';
+import AttributionModelPreview from './previews/AttributionModelPreview';
+import EventTemplatePreview from './previews/EventTemplatePreview';
 
 const PREVIEW_COMPONENTS = {
   'entity-card': EntityCardPreview,
-  'pipeline': PipelinePreview,
-  'email-template': EmailTemplatePreview,
+  'attribution-model': AttributionModelPreview,
+  'event-template': EventTemplatePreview,
 };
 
 export function ContextMenuPreview({ preview, triggerRef, isVisible }) {

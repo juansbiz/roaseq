@@ -83,7 +83,7 @@ export default function Register() {
             </Link>
 
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Create your account</h1>
-            <p className="text-gray-600 mb-8">Start growing your brand today</p>
+            <p className="text-gray-600 mb-8">Start attribution for free, no credit card</p>
 
             {error && (
               <div className="flex items-center gap-2 p-3 mb-4 bg-red-50 text-red-600 rounded-lg">
@@ -206,8 +206,8 @@ export default function Register() {
         <div className="hidden lg:block lg:w-1/2 bg-gradient-to-br from-yellow-600 to-yellow-500 p-8">
           <div className="h-full flex items-center justify-center">
             <div className="text-center text-white">
-              <h2 className="text-4xl font-bold mb-4">Join thousands of brands</h2>
-              <p className="text-yellow-500 text-lg">Grow your business with ROASEQ</p>
+              <h2 className="text-4xl font-bold mb-4">Own your attribution</h2>
+              <p className="text-yellow-500 text-lg">Open-source. Self-hosted. Free forever.</p>
             </div>
           </div>
         </div>

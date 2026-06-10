@@ -330,7 +330,7 @@ const FeatureShowcaseSection = ({ className }) => {
             Three Areas That Replace 10+ Tools
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            Customers, Marketing, and Intelligence—each Space is a complete platform that
+            Customers, Marketing, and Intelligence, each Space is a complete platform that
             replaces multiple expensive tools. Save $1,967/month.
           </p>
         </div>

@@ -114,6 +114,6 @@ This is the first release of the security policy. The "Security Hall of Fame" wi
 
 - **Email:** `juan@hificopy.com` (PGP key: TBD, will be added once we set up a keyserver)
 - **GitHub Security Advisories:** https://github.com/juansbiz/roaseq/security/advisories/new
-- **Maintainer:** Juan (juansbiz) — best-effort response within 72 hours
+- **Maintainer:** Juan (juansbiz), best-effort response within 72 hours
 
 For anything that's not a security issue, please use the regular [issue tracker](https://github.com/juansbiz/roaseq/issues) or [Discussions](https://github.com/juansbiz/roaseq/discussions) instead.

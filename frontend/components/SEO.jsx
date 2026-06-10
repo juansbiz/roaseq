@@ -11,17 +11,17 @@ const SUPPORTED_LANGUAGES = [
 ];
 
 const SEO = ({
-  title = 'ROASEQ - Ecommerce CRM | Replace Klaviyo & Omnisend',
-  description = 'ROASEQ: The email marketing CRM for ecommerce. Replace Klaviyo, Omnisend, and Mailchimp with one flat-price platform. Save money, own your data, scale forever.',
-  keywords = 'ecommerce CRM, Klaviyo alternative, Omnisend alternative, Mailchimp alternative, email marketing CRM, Shopify CRM, DTC CRM, ecommerce email marketing, ecommerce automation, own your data CRM',
+  title = 'ROASEQ - Open-Source Ecommerce Attribution | FOSS Triple Whale Alternative',
+  description = 'ROASEQ is the open-source ecommerce attribution platform. The FOSS alternative to Triple Whale, Northbeam, and Hyros. Multi-touch attribution, channel ROI, journey stitching - in your own Postgres. Self-host free forever, or managed cloud from $39/mo. No percentage of ad spend. No 12-month contract. Your data, your models, your database.',
+  keywords = 'attribution, multi-touch attribution, ecommerce attribution, Triple Whale alternative, Hyros alternative, Northbeam alternative, FOSS attribution, open source attribution, self-hosted attribution, ROAS, MER, channel ROI, journey stitching, server-side events, data ownership, no vendor lock-in, AGPL, attribution platform',
   url = 'https://www.roaseq.com',
   image = 'https://www.roaseq.com/roaseq-og-image.jpg',
   twitterImage = 'https://www.roaseq.com/roaseq-twitter-image.jpg',
   type = 'website',
-  author = 'ROASEQ LLC',
+  author = 'ROASEQ',
   rating = '4.8',
   reviewCount = '250',
-  price = '149.00',
+  price = '0.00',
   priceCurrency = 'USD',
   affiliateName = null,
   noHreflang = false, // Set to true for pages that shouldn't have language alternates
@@ -76,7 +76,7 @@ const SEO = ({
       <meta property="og:title" content={seoTitle} />
       <meta property="og:description" content={seoDescription} />
       <meta property="og:image" content={image} />
-      <meta property="og:image:alt" content="ROASEQ - All-in-One Business Platform" />
+      <meta property="og:image:alt" content="ROASEQ - Open-Source Ecommerce Attribution Platform" />
       <meta property="og:site_name" content="ROASEQ" />
       <meta property="og:locale" content={ogLocale} />
       {currentLanguage === 'es' && <meta property="og:locale:alternate" content="en_US" />}
@@ -88,7 +88,7 @@ const SEO = ({
       <meta name="twitter:title" content={seoTitle} />
       <meta name="twitter:description" content={seoDescription} />
       <meta name="twitter:image" content={twitterImage} />
-      <meta name="twitter:image:alt" content="ROASEQ - All-in-One Business Platform" />
+      <meta name="twitter:image:alt" content="ROASEQ - Open-Source Ecommerce Attribution Platform" />
       <meta name="twitter:site" content="@roaseq" />
       
       {/* Canonical URL */}

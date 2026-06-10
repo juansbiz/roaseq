@@ -4,7 +4,7 @@ credentials-file: /etc/cloudflared/business/credentials.json
 no-autoupdate: true
 
 ingress:
-  # GotonDollar.com — main marketing + API
+  # GotonDollar.com - main marketing + API
   - hostname: gotonedollar.com
     service: https://[::1]:443
     originRequest:
@@ -20,7 +20,7 @@ ingress:
     originRequest:
       noTLSVerify: true
 
-  # Internal services — antieq.com
+  # Internal services - antieq.com
   - hostname: vsl.antieq.com
     service: https://[::1]:443
     originRequest:
@@ -82,7 +82,7 @@ ingress:
     originRequest:
       noTLSVerify: true
 
-  # HIFICOPY — hificopy.com domains
+  # ROASEQ - hificopy.com domains
   - hostname: newsletter.hificopy.com
     service: https://[::1]:443
     originRequest:
@@ -96,7 +96,7 @@ ingress:
     originRequest:
       noTLSVerify: true
 
-  # Listmonk — central email marketing hub
+  # Listmonk - central email marketing hub
   - hostname: listmonk.antieq.com
     service: https://[::1]:443
     originRequest:
@@ -110,7 +110,7 @@ ingress:
     originRequest:
       noTLSVerify: true
 
-  # ROASEQ — roaseq.com domains
+  # ROASEQ - roaseq.com domains
   - hostname: dev.roaseq.com
     service: https://[::1]:443
     originRequest:
