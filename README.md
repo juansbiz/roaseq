@@ -1,18 +1,17 @@
 <div align="center">
 
-# 🐳 ROASEQ
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-yellow?style=flat-square)](./LICENSE)
+[![Status: Beta](https://img.shields.io/badge/Status-Beta-yellow?style=flat-square)]()
+[![FOSS](https://img.shields.io/badge/FOSS-yes-yellow?style=flat-square)]()
+[![Postgres](https://img.shields.io/badge/Postgres-14%2B-blue?style=flat-square)]()
+[![Node](https://img.shields.io/badge/Node-20%2B-brightgreen?style=flat-square)]()
 
-**The open-source attribution platform for ecommerce.**
-**Run it on your hardware. Own the events.**
+# ROASEQ
 
-[⭐ Star on GitHub](https://github.com/juansbiz/roaseq) &nbsp;·&nbsp; [📖 Docs](./docs) &nbsp;·&nbsp; [🐛 Report a bug](https://github.com/juansbiz/roaseq/issues) &nbsp;·&nbsp; [🐦 @juansbizz](https://twitter.com/juansbizz)
+### Multi-touch attribution for ecommerce. In your own Postgres.
 
-[![GitHub stars](https://img.shields.io/github/stars/juansbiz/roaseq?style=flat-square&logo=github&color=ffd400)](https://github.com/juansbiz/roaseq/stargazers)
-[![GitHub license](https://img.shields.io/github/license/juansbiz/roaseq?style=flat-square&color=blue)](https://github.com/juansbiz/roaseq/blob/main/LICENSE)
-[![AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-orange?style=flat-square)](https://opensource.org/licenses/AGPL-3.0)
-[![Codeberg mirror](https://img.shields.io/badge/Codeberg-mirror-2185d0?style=flat-square&logo=codeberg&logoColor=white)](https://codeberg.org/juansbiz/roaseq)
-[![Last commit](https://img.shields.io/github/last-commit/juansbiz/roaseq?style=flat-square&color=success)](https://github.com/juansbiz/roaseq/commits/main)
-[![Forgejo canonical](https://img.shields.io/badge/canonical-Forgejo-2d7f5e?style=flat-square&logo=forgejo&logoColor=white)](#why-foss)
+[roaseq.com](https://roaseq.com) is the marketing site.
+This repo is the self-hostable software.
 
 </div>
 
@@ -20,75 +19,167 @@
 
 ## What is ROASEQ?
 
-The FOSS alternative to Triple Whale. Multi-touch attribution, channel ROI, journey stitching, in your own Postgres. No percentage of ad spend. No annual contract. No lock-in.
+Multi-touch attribution (first-touch, last-touch, linear, time-decay, position-based, data-driven), channel ROI, and journey stitching for Shopify, WooCommerce, and BigCommerce stores.
 
-> The dream: an emerging brand runs real attribution on its own infrastructure for free, instead of paying a vendor a percentage of ad spend to know which Facebook ad is profitable.
+The events live in your Postgres. The models live in this repo. The contract is the AGPL. Nothing to renew.
 
----
+## Why FOSS?
 
-## The problem
-
-Triple Whale, Northbeam, Polar, Rockerbox, Wicked Reports. They all do the same thing. They hold your attribution data in their warehouse, charge you a flat fee (or worse) to see it, and lock you into a 12-month contract.
+Closed-source attribution tools (Triple Whale, Northbeam, Polar, Rockerbox, Wicked Reports) charge $179 to $4,999/month and lock you into 12-month contracts. They hold your attribution data in their warehouse. You can't export it. You can't run your own models. You can't audit the math.
 
 A 2025 audit by Wicked Reports and Tier 11 across 2,000+ brands found third-party attribution tools misreport up to 30% of revenue. Bottom-funnel channels get over-credited. Prospecting looks broken even when it's working. Brands scale the wrong campaigns and kill the ones actually creating customers.
 
-None of them are open source. None of them self-host. None of them put the events in your database where you can run your own models.
+ROASEQ is the FOSS alternative. The events land directly in your Postgres. You can audit the attribution math, run your own models, and export anytime. No vendor lock-in. No 12-month contract. No percentage of ad spend.
 
-ROASEQ does.
+## Quick start (Docker)
 
----
-
-## What you get
-
-🧠 **Multi-touch attribution.** First-touch, last-touch, linear, time-decay, position-based, data-driven. Pick the model that fits your business, or build your own.
-
-💵 **No percentage of ad spend. No annual contract.** Free, self-hosted. Or flat-rate cloud. Forever.
-
-🔓 **The events are yours.** Every ad click, every checkout, every email open, every repeat purchase: a row in your own Postgres. Export anytime. Run any model you want.
-
----
-
-## What you replace
-
-| Closed source | What it charges | ROASEQ |
-|---|---|---|
-| **Triple Whale** | $179 to $749/mo, enterprise custom, 12-month lock-in | Free self-host, or flat cloud |
-| **Northbeam** | $1,500/mo starter, custom above that, demo-gated | Free self-host, or flat cloud |
-| **Polar Analytics** | Quote-based, "Core" bundle discount, your own Snowflake (but theirs) | Free self-host, YOUR Postgres |
-| **Rockerbox** | No public pricing, $250K+ media spend to qualify | Free self-host, no qualification |
-| **Wicked Reports** | $499 to $999/mo, $4,999/mo enterprise | Free self-host, or flat cloud |
-
-The same answers to "which ad is profitable" and "where did this customer come from," in your own database, without the vendor markup.
-
----
-
-## Quick start
-
-Self-host with Docker:
+Requires Docker 24+ and 4 GB RAM.
 
 ```bash
 git clone https://github.com/juansbiz/roaseq.git
 cd roaseq
-cd docker && docker compose up
+docker compose -f docker/docker-compose.yml up
 ```
 
-Or run the dev stack:
+Frontend on `:5173`, backend on `:3001`, Postgres on `:5432`.
+
+The first time the stack starts, the backend runs a setup wizard at `http://localhost:5173/setup` to configure the database, your admin account, your AI provider, and your first store connection.
+
+For local development without Docker:
 
 ```bash
-git clone https://github.com/juansbiz/roaseq.git
-cd roaseq
 npm install
 npm run dev          # frontend on :5173
 npm run backend:local  # backend on :3001
 ```
 
-Then connect your store (Shopify, WooCommerce, BigCommerce), connect your ad accounts (Meta, Google, TikTok, Snap, Pinterest), and the events start flowing. Your data, your Postgres, your machine.
+## Configuration
 
----
+Copy `config/example.env` to `config/.env` and set:
+
+```
+DATABASE_URL=postgres://roaseq:roaseq@localhost:5432/roaseq
+REDIS_URL=redis://localhost:6379
+SECRET_KEY=<32 char random string>
+PORT=3001
+NODE_ENV=production
+```
+
+## Connectors
+
+| Store | Status | Docs |
+|---|---|---|
+| Shopify | Stable | [docs/SHOPIFY.md](./docs/SHOPIFY.md) |
+| WooCommerce | Stable | [docs/WOOCOMMERCE.md](./docs/WOOCOMMERCE.md) |
+| BigCommerce | Beta | [docs/BIGCOMMERCE.md](./docs/BIGCOMMERCE.md) |
+
+| Ad platform | Status | Docs |
+|---|---|---|
+| Meta | Stable | [docs/META.md](./docs/META.md) |
+| Google Ads | Stable | [docs/GOOGLE-ADS.md](./docs/GOOGLE-ADS.md) |
+| TikTok | Beta | [docs/TIKTOK.md](./docs/TIKTOK.md) |
+| Snap | Planned | (not yet) |
+| Pinterest | Planned | (not yet) |
+
+## Attribution models
+
+ROASEQ ships with six attribution models out of the box. Each is a SQL view in your database; you can audit, modify, or replace them.
+
+- `attribution.first_touch`: first touchpoint gets 100% of the credit
+- `attribution.last_touch`: last touchpoint gets 100% of the credit
+- `attribution.linear`: equal credit across all touchpoints
+- `attribution.time_decay`: exponential decay from conversion (7-day half-life)
+- `attribution.position_based`: 40% first, 40% last, 20% middle
+- `attribution.data_driven`: Shapley value approximation
+
+Build your own: see [docs/CUSTOM-MODELS.md](./docs/CUSTOM-MODELS.md).
+
+## First-run wizard
+
+When you start ROASEQ for the first time, a 5-step setup wizard walks you through:
+
+1. Database (bundled Postgres or your own)
+2. Admin user (email + password)
+3. AI provider (OpenAI, Anthropic, AWS Bedrock, Ollama, or any OpenAI-compatible endpoint)
+4. First store (Shopify, WooCommerce, or BigCommerce)
+5. Done. You're at the dashboard.
+
+The wizard works offline. It does not call home. It does not require an account at the marketing site.
+
+## System requirements
+
+| Component | Minimum | Recommended |
+|---|---|---|
+| CPU | 2 cores | 4 cores |
+| RAM | 4 GB | 8 GB |
+| Storage | 20 GB | 100 GB SSD |
+| Postgres | 14 | 16 |
+| Node | 20 LTS | 22 LTS |
+| Redis | 6 | 7 |
+
+## Deployment
+
+- Docker Compose (single host): see [docker/](./docker/)
+- Kubernetes (Helm): see [deploy/helm/](./deploy/helm/)
+- Air-gapped: see [docs/AIRGAPPED.md](./docs/AIRGAPPED.md)
+- Single binary: `npx roaseq` (evaluation only, not for production)
+
+## Migration from closed-source tools
+
+Importers for Triple Whale, Northbeam, Polar, Rockerbox, and Wicked Reports are included. See [docs/MIGRATION.md](./docs/MIGRATION.md).
+
+## API
+
+REST API on `:3001/api`. OpenAPI spec at `/api/docs`. See [docs/API.md](./docs/API.md).
+
+## Telemetry
+
+ROASEQ has zero telemetry. No outbound calls. No license check. No usage reporting. The software runs entirely inside your perimeter.
+
+## Architecture
+
+```
+ROASEQ/
+├── backend/                # Node.js + Express + TypeScript attribution engine
+│   ├── src/
+│   │   ├── attribution/    # 6 attribution models
+│   │   ├── connectors/     # Store + ad platform connectors
+│   │   ├── journey/        # Journey stitching
+│   │   ├── api/            # REST API
+│   │   └── server.ts       # Express entry point
+│   └── tsconfig.json
+├── frontend/               # React + Vite + Tailwind attribution dashboard
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Setup.jsx     # 5-step first-run wizard
+│   │   │   └── ...
+│   │   ├── components/
+│   │   └── App.jsx          # Router + SetupGuard
+│   └── package.json
+├── db/                      # Postgres migrations
+│   └── 0001_initial.sql
+├── docker/                  # Docker Compose stack
+├── deploy/                  # K8s Helm charts, air-gapped
+├── docs/                    # Self-host documentation
+└── .github/workflows/       # CI (immersion rule + build + lint + test)
+```
+
+See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) for the full design.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md). Pull requests welcome.
+
+## Security
+
+See [SECURITY.md](./SECURITY.md). 90-day disclosure timeline.
 
 ## License
 
-**AGPL-3.0.** Use it, fork it, self-host it, modify it. If you run a modified version as a network service, publish your changes. That's the deal. It's how the FOSS attribution layer stays open.
+**AGPL-3.0.** See [LICENSE](./LICENSE).
+
+Use it, fork it, self-host it, modify it. If you run a modified version as a network service, publish your changes. That's the deal. It's how the FOSS attribution layer stays open.
 
 ---
 
