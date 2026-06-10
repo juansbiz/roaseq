@@ -1,22 +1,21 @@
 import { useState, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { 
-  Home, 
-  ChevronDown, 
-  Plus, 
+import {
+  Home,
+  ChevronDown,
+  Plus,
   Building2,
   Settings,
-  Users,
-  BarChart3,
-  Mail,
-  FileText,
+  Server,
+  GitBranch,
+  Database,
   Workflow,
   Target,
-  CheckSquare,
+  Cpu,
   Lock,
-  DollarSign,
   TrendingUp,
-  Heart
+  Heart,
+  BarChart3,
 } from "lucide-react";
 import { useBrand } from "@/hooks/useBrand";
 
@@ -29,7 +28,7 @@ export default function SimplifiedSidebar({ isSidebarCollapsed, onMouseEnter, on
   const { brand, brands, setBrand } = useBrand();
   const [isBrandOpen, setIsBrandOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSpace, setActiveSpace] = useState('retention');
+  const [activeSpace, setActiveSpace] = useState("attribute");
   const [showPlusMenu, setShowPlusMenu] = useState(false);
 
   const currentBrand = brand || MOCK_BRANDS[0];
@@ -37,9 +36,9 @@ export default function SimplifiedSidebar({ isSidebarCollapsed, onMouseEnter, on
   const brandCount = brandList.length;
 
   const spaces = [
-    { id: 'acquisition', icon: DollarSign, label: 'Acquisition' },
-    { id: 'retention', icon: Mail, label: 'Retention' },
-    { id: 'projects', icon: CheckSquare, label: 'Projects' },
+    { id: "capture", icon: Server, label: "Capture" },
+    { id: "attribute", icon: GitBranch, label: "Attribute" },
+    { id: "own", icon: Database, label: "Own" },
   ];
 
   const handleSpaceSwitch = (spaceId) => {
@@ -47,26 +46,27 @@ export default function SimplifiedSidebar({ isSidebarCollapsed, onMouseEnter, on
   };
 
   const navigationItems = {
-    retention: [
-      { name: 'Dashboard', href: "/app/dashboard", icon: Home, primary: true },
-      { name: 'Customers', href: "/app/customers", icon: Users, primary: true },
-      { name: 'Orders', href: "/app/orders", icon: FileText, primary: true },
+    capture: [
+      { name: "Channels", href: "/app/channels", icon: Server, primary: true },
+      { name: "Events", href: "/app/events", icon: BarChart3, primary: true },
+      { name: "Ad Connectors", href: "/app/connectors", icon: TrendingUp, primary: true },
     ],
-    acquisition: [
-      { name: 'Analytics', href: "/app/analytics", icon: BarChart3, primary: true },
-      { name: 'Campaigns', href: "/app/campaigns", icon: Mail, primary: true },
+    attribute: [
+      { name: "Dashboard", href: "/app/dashboard", icon: Home, primary: true },
+      { name: "Models", href: "/app/models", icon: GitBranch, primary: true },
+      { name: "Journeys", href: "/app/journeys", icon: Workflow, primary: true },
     ],
-    tools: [
-      { name: 'Automations', href: "#", icon: Workflow, locked: true },
-      { name: 'Forms', href: "#", icon: FileText, locked: true },
-      { name: 'SMS', href: "#", icon: Target, locked: true },
+    own: [
+      { name: "Events", href: "/app/events-raw", icon: Database, primary: true },
+      { name: "AI Connections", href: "/app/ai", icon: Cpu, primary: true },
+      { name: "Open API", href: "/app/api", icon: Target, primary: true },
     ],
   };
 
   const spaceLabels = {
-    retention: 'Main',
-    acquisition: 'Growth',
-    tools: 'Tools',
+    capture: "Capture",
+    attribute: "Attribute",
+    own: "Own",
   };
 
   return (

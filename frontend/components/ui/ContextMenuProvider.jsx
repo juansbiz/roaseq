@@ -226,10 +226,10 @@ export function withContextMenu(Component, menuConfig) {
 }
 
 /**
- * Pre-built menu configurations for common CRM actions
+ * Pre-built menu configurations for common attribution actions
  */
-export const CRMMenuConfigs = {
-  // Lead-specific context menu
+export const AttributionMenuConfigs = {
+  // Lead-specific context menu (legacy, kept for backward compat)
   lead: (
     lead,
     {
@@ -544,5 +544,11 @@ export const CRMMenuConfigs = {
 
 // Re-export helper functions for convenience
 export { createMenuItem, createDivider, createHeader, createSmartHeader };
+
+// Backward-compat alias, old code may still import CRMMenuConfigs.
+/**
+ * @deprecated Use AttributionMenuConfigs instead.
+ */
+export const CRMMenuConfigs = AttributionMenuConfigs;
 
 export default ContextMenuProvider;

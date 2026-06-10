@@ -221,7 +221,7 @@ export default function ContextSpotlight() {
                   <div className="px-3 py-6 text-center">
                     <Search className="w-8 h-8 mx-auto text-gray-300 dark:text-gray-600 mb-2" />
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {searchQuery ? `Searching for "${searchQuery}"...` : 'Type to search across your CRM'}
+                      {searchQuery ? `Searching for "${searchQuery}"...` : 'Type to search across your attribution events'}
                     </p>
                   </div>
                 </div>

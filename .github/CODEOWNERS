@@ -15,7 +15,7 @@
 # Worktree-specific owners (when a future team exists, add them here)
 # For now, everything routes to @juansbiz (sole maintainer).
 
-# Critical files — force explicit review even if a co-owner exists later
+# Critical files - force explicit review even if a co-owner exists later
 /LICENSE @juansbiz
 /SECURITY.md @juansbiz
 /CODE_OF_CONDUCT.md @juansbiz

@@ -42,19 +42,18 @@
     />
 
     <!--
-      ROASEQ TYPOGRAPHY BRANDING
-      =========================
-      - Body text: Inter (default)
-      - Headers: Epilogue (https://fonts.google.com/specimen/Epilogue)
-      
-      Epilogue adds a modern, clean, readable, and youthful feel to all headers.
+      ROASEQ TYPOGRAPHY BRANDING (ROASEQ Unified)
+      =============================================
+      - Body text: Inter
+      - Headers: Bebas Neue (https://fonts.google.com/specimen/Bebas+Neue)
+      - The Bebas Neue + Inter pairing is the ROASEQ unified system, mirrored from ROASEQ.
     -->
 
-    <!-- Preload Epilogue font for headers -->
+    <!-- Preload Bebas Neue for headers -->
     <link
       rel="preload"
       as="font"
-      href="https://fonts.gstatic.com/s/epilogue/v16/O4z3jQIV9lRsJ3C7R-dIUJnq3y4nYgtTK1wIPomfNT8.woff2"
+      href="https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXoo9Wlhyw.woff2"
       type="font/woff2"
       crossorigin
     />
@@ -65,57 +64,32 @@
       rel="stylesheet"
     />
 
-    <!-- Epilogue font - Headers -->
+    <!-- Bebas Neue font - Headers -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
     />
 
     <!--
-      Premium fonts for Funnel Builder - DEFERRED
-      These only load after initial paint using print media trick
-      They switch to all media on load for non-blocking loading
+      Premium display fonts - DEFERRED
+      These only load after initial paint using the print-media trick.
     -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <!-- Fallback for browsers with JS disabled -->
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
 
     <!-- SEO Meta Tags -->
     <title>
-      ROASEQ - The New Age CRM with Local AI Second Brain | All-in-One
-      Platform
+      ROASEQ - Open-Source Ecommerce Attribution | FOSS Triple Whale Alternative
     </title>
     <meta
       name="title"
-      content="ROASEQ - The New Age CRM with Local AI Second Brain | All-in-One Platform"
+      content="ROASEQ - Open-Source Ecommerce Attribution | FOSS Triple Whale Alternative"
     />
     <meta
       name="description"
-      content="ROASEQ: The New Age CRM with Local AI Second Brain. Replace 10+ tools with our all-in-one platform. HubSpot competitor for ECOMMERCE, B2B BUSINESS, REAL ESTATE. Features: AI assistant, Project Management, Mind Maps, Marketing Automation."
+      content="ROASEQ is the open-source ecommerce attribution platform. The FOSS alternative to Triple Whale, Northbeam, and Hyros. Multi-touch attribution, channel ROI, journey stitching - in your own Postgres. Self-host free forever, or managed cloud from $39/mo. No percentage of ad spend. No 12-month contract. Your data, your models, your database."
     />
     <meta
       name="keywords"
-      content="CRM, ROASEQ, HubSpot alternative, AI CRM, sales automation, marketing automation, project management, mind maps, business automation, GoHighLevel competitor, e-commerce CRM, B2B CRM, real estate CRM, AI assistant"
+      content="attribution, multi-touch attribution, ecommerce attribution, Triple Whale alternative, Hyros alternative, Northbeam alternative, FOSS attribution, open source attribution, self-hosted attribution, ROAS, MER, channel ROI, journey stitching, server-side events, data ownership, no vendor lock-in, AGPL, attribution platform"
     />
     <meta name="author" content="ROASEQ LLC" />
     <meta name="robots" content="index, follow" />
@@ -212,11 +186,11 @@
     <meta property="og:url" content="https://www.roaseq.com" />
     <meta
       property="og:title"
-      content="ROASEQ - The New Age CRM with Local AI Second Brain"
+      content="ROASEQ - Open-Source Ecommerce Attribution Platform"
     />
     <meta
       property="og:description"
-      content="Replace 10+ tools with our all-in-one platform. Features AI assistant, Project Management, Mind Maps, Marketing Automation, and more."
+      content="The FOSS alternative to Triple Whale, Northbeam, and Hyros. Multi-touch attribution, channel ROI, journey stitching - in your own Postgres. Self-host free, or cloud from $39/mo."
     />
     <meta
       property="og:image"
@@ -224,7 +198,7 @@
     />
     <meta
       property="og:image:alt"
-      content="ROASEQ - All-in-One Business Platform"
+      content="ROASEQ - Open-Source Ecommerce Attribution Platform"
     />
     <meta property="og:site_name" content="ROASEQ" />
     <meta property="og:locale" content="en_US" />
@@ -234,11 +208,11 @@
     <meta name="twitter:url" content="https://www.roaseq.com" />
     <meta
       name="twitter:title"
-      content="ROASEQ - The New Age CRM with Local AI Second Brain"
+      content="ROASEQ - Open-Source Ecommerce Attribution Platform"
     />
     <meta
       name="twitter:description"
-      content="Replace 10+ tools with our all-in-one platform. Features AI assistant, Project Management, Mind Maps, Marketing Automation, and more."
+      content="The FOSS alternative to Triple Whale, Northbeam, and Hyros. Multi-touch attribution, channel ROI, journey stitching. Self-host free, or cloud from $39/mo."
     />
     <meta
       name="twitter:image"
@@ -259,15 +233,25 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "ROASEQ",
-        "description": "The New Age CRM with Local AI Second Brain. All-in-one platform replacing 10+ SaaS tools.",
+        "description": "Open-source ecommerce attribution platform. The FOSS alternative to Triple Whale, Northbeam, and Hyros. Multi-touch attribution, channel ROI, journey stitching - in your own Postgres. Self-host free forever, or managed cloud from $39/mo.",
         "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "offers": {
-          "@type": "Offer",
-          "price": "149.00",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock"
-        },
+        "operatingSystem": "Web, Docker, Linux",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Self-Hosted",
+            "price": "0.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          {
+            "@type": "Offer",
+            "name": "Cloud",
+            "price": "39.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
+        ],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.8",
@@ -275,7 +259,8 @@
         },
         "creator": {
           "@type": "Organization",
-          "name": "ROASEQ LLC"
+          "name": "ROASEQ",
+          "url": "https://www.roaseq.com"
         }
       }
     </script>

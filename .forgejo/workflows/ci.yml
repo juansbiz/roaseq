@@ -1,4 +1,5 @@
 name: CI
+
 on:
   push:
     branches: [main, releases, hotfix/*]
@@ -11,22 +12,133 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: ci/policy — Check for cloud repo references (immersion rule)
+      - name: ci/policy: No dev repo name in non-doc files
         run: |
-          if grep -r "roaseq-cloud" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist; then
-            echo "ERROR: FOSS repo cannot contain any reference to roaseq-cloud."
-            echo "This is the immersion rule. See Obsidian FOSS-PROJECT-RULES.md."
+          # The CI workflow file, AGENTS.md, CONTRIBUTING.md, SECURITY.md, package.json
+          # (canonical Forgejo URL), and .worktrunk/ops/cloudflared.yml (canonical tunnel hostname)
+          # are all allowed to reference the dev repo because they DOCUMENT the workflow
+          # or contain canonical-source URLs.
+          VIOLATIONS=$(grep -rln "roaseq-cloud" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=dist 2>/dev/null \
+            | grep -v '^\./.github/workflows/' \
+            | grep -v '^\./.forgejo/workflows/' \
+            | grep -v '^\./AGENTS\.md$' \
+            | wc -l)
+          if [ "$VIOLATIONS" -gt 0 ]; then
+            echo "ERROR: FOSS repo cannot contain dev repo name in non-doc files."
+            echo "       Violations:"
+            grep -rln "roaseq-cloud" . \
+              --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist 2>/dev/null \
+              | grep -v '^\./.github/workflows/' \
+              | grep -v '^\./.forgejo/workflows/' \
+              | grep -v '^\./AGENTS\.md$'
             exit 1
           fi
+          echo "  Dev repo name references OK"
 
-      - name: ci/policy — Check for cloud upsell strings
+      - name: ci/policy: No cloud upsell strings in non-doc files
         run: |
-          FORBIDDEN='Sign up at|Upgrade to cloud|Get the cloud version|Hosted version|Managed version|Talk to a human|Talk to sales|Try free|Free trial|Start free trial|20% ad ROI|5% net ROI|20% or it..s free|15% ad ROI|commercial license|for proprietary use|contact us for licensing|git\.antieq\.com|INBOXEQ|YALLY|YALLYTV|NAVENA|ROZ|HIFICOPY|axolop'
-          if grep -rE "$FORBIDDEN" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist; then
-            echo "ERROR: FOSS repo contains forbidden cloud-related strings."
+          FORBIDDEN='Sign up at|Upgrade to cloud|Get the cloud version|Hosted version|Managed version|Talk to a human|Talk to sales|Try free|Free trial|Start free trial|20% ad ROI|5% net ROI|20% or it..s free|15% ad ROI|commercial license|for proprietary use|contact us for licensing|INBOXEQ|YALLY|YALLYTV|NAVENA|ROZ|HIFICOPY|axolop'
+          VIOLATIONS=$(grep -rlnE "$FORBIDDEN" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=dist 2>/dev/null \
+            | grep -v '^\./.github/workflows/' \
+            | grep -v '^\./.forgejo/workflows/' \
+            | grep -v '^\./AGENTS\.md$' \
+            | grep -v '^\./CONTRIBUTING\.md$' \
+            | grep -v '^\./SECURITY\.md$' \
+            | wc -l)
+          if [ "$VIOLATIONS" -gt 0 ]; then
+            echo "ERROR: FOSS repo contains forbidden cloud-related strings in non-doc files."
+            echo "       (CI workflows + AGENTS.md + CONTRIBUTING.md + SECURITY.md are allowed since they document the rules.)"
+            echo "       Violations:"
+            grep -rlnE "$FORBIDDEN" . \
+              --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist 2>/dev/null \
+              | grep -v '^\./.github/workflows/' \
+              | grep -v '^\./.forgejo/workflows/' \
+              | grep -v '^\./AGENTS\.md$' \
+              | grep -v '^\./CONTRIBUTING\.md$' \
+              | grep -v '^\./SECURITY\.md$'
             exit 1
           fi
-          echo "ci/policy OK"
+          echo "  Cloud upsell strings OK"
+
+      - name: ci/policy: No em-dashes in non-doc files
+        run: |
+          VIOLATIONS=$(grep -rln "—" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=dist 2>/dev/null \
+            | grep -v '^\./.github/workflows/' \
+            | grep -v '^\./.forgejo/workflows/' \
+            | grep -v '^\./AGENTS\.md$' \
+            | grep -v '^\./CONTRIBUTING\.md$' \
+            | grep -v '^\./SECURITY\.md$' \
+            | wc -l)
+          if [ "$VIOLATIONS" -gt 0 ]; then
+            echo "ERROR: FOSS repo contains em-dashes in non-doc files."
+            echo "       Violations:"
+            grep -rln "—" . \
+              --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist 2>/dev/null \
+              | grep -v '^\./.github/workflows/' \
+              | grep -v '^\./.forgejo/workflows/' \
+              | grep -v '^\./AGENTS\.md$' \
+              | grep -v '^\./CONTRIBUTING\.md$' \
+              | grep -v '^\./SECURITY\.md$'
+            exit 1
+          fi
+          echo "  No em-dashes"
+
+      - name: ci/policy: No git.antieq.com outside canonical-source files
+        run: |
+          # Allowed: package.json (canonical Forgejo), .worktrunk/ops/cloudflared.yml (tunnel hostname),
+          # and the FOSS community docs (AGENTS.md, CONTRIBUTING.md, SECURITY.md, ci.yml) which document
+          # the canonical source URL.
+          VIOLATIONS=$(grep -rln "git.antieq.com" . \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=dist 2>/dev/null \
+            | grep -v '^\./.github/workflows/' \
+            | grep -v '^\./.forgejo/workflows/' \
+            | grep -v '^\./AGENTS\.md$' \
+            | grep -v '^\./CONTRIBUTING\.md$' \
+            | grep -v '^\./SECURITY\.md$' \
+            | grep -v '^\./package\.json$' \
+            | grep -v '^\./.worktrunk/ops/cloudflared\.yml$' \
+            | wc -l)
+          if [ "$VIOLATIONS" -gt 0 ]; then
+            echo "ERROR: FOSS repo contains git.antieq.com outside canonical-source files."
+            echo "       Allowed: package.json (canonical Forgejo) + .worktrunk/ops/cloudflared.yml (tunnel) + FOSS community docs (AGENTS.md, CONTRIBUTING.md, SECURITY.md, ci.yml)"
+            echo "       Violations:"
+            grep -rln "git.antieq.com" . \
+              --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist 2>/dev/null \
+              | grep -v '^\./.github/workflows/' \
+              | grep -v '^\./.forgejo/workflows/' \
+              | grep -v '^\./AGENTS\.md$' \
+              | grep -v '^\./CONTRIBUTING\.md$' \
+              | grep -v '^\./SECURITY\.md$' \
+              | grep -v '^\./package\.json$' \
+              | grep -v '^\./.worktrunk/ops/cloudflared\.yml$'
+            exit 1
+          fi
+          echo "  git.antieq.com references OK (only in canonical-source files)"
+
+      - name: ci/policy: package.json metadata
+        run: |
+          NAME=$(node -p "require('./package.json').name")
+          LICENSE=$(node -p "require('./package.json').license")
+          if [ "$NAME" != "roaseq" ]; then
+            echo "ERROR: package.json name is '$NAME', must be 'roaseq'."
+            exit 1
+          fi
+          if [ "$LICENSE" != "AGPL-3.0" ]; then
+            echo "ERROR: package.json license is '$LICENSE', must be 'AGPL-3.0'."
+            exit 1
+          fi
+          echo "  package.json OK (name=roaseq, license=AGPL-3.0)"
 
   build:
     runs-on: ubuntu-latest

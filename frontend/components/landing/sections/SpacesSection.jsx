@@ -85,7 +85,7 @@ const SpacesSection = ({ className }) => {
             Everything You Need to Run Your Store
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            Sales, Marketing, and Ad management — all in one free, open-source platform. 
+            Sales, Marketing, and Ad management, all in one free, open-source platform. 
             Replace 10+ tools and save thousands per month.
           </p>
         </div>

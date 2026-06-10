@@ -12,7 +12,7 @@ export default {
     },
     extend: {
       colors: {
-        // ROASEQ brand palette — yellow accent on dark
+        // ROASEQ brand palette, yellow accent on dark
         // Primary BG / Headers / Footers
         black: {
           DEFAULT: "#101010",
@@ -50,7 +50,7 @@ export default {
           dark: "#101010",
           accent: "#f2ff00",
         },
-        // Brand colors — unified HIFICOPY palette
+        // Brand colors, unified ROASEQ palette
         brand: {
           yellow: "#f2ff00",
           accent: "#f2ff00",
@@ -80,7 +80,17 @@ export default {
         warning: "#f2ff00",
         error: "#ff453a",
         info: "#007aff",
-        // CRM specific
+        // App shell surface tokens (attribution platform, replaces legacy crm-* names)
+        "app-sidebar": "#101010",
+        "app-sidebar-hover": "#1a1a1a",
+        "app-sidebar-active": "#f2ff00",
+        "app-bg-light": "#ffffff",
+        "app-bg-dark": "#101010",
+        "app-text-primary": "#ffffff",
+        "app-text-secondary": "#a3a3a3",
+        "app-border": "#2a2a2a",
+        "app-accent": "#f2ff00",
+        // Legacy CRM tokens, kept for backward compat with older code, mirror the app-* values
         "crm-sidebar": "#101010",
         "crm-sidebar-hover": "#1a1a1a",
         "crm-sidebar-active": "#f2ff00",
@@ -122,9 +132,9 @@ export default {
         },
       },
       fontFamily: {
-        // Headers / Nav / Logo — Bebas Neue
+        // Headers / Nav / Logo, Bebas Neue
         bebas: ["Bebas Neue", "sans-serif"],
-        // Body text — Inter
+        // Body text, Inter
         sans: [
           "Inter",
           "-apple-system",

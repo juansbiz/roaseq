@@ -1,14 +1,14 @@
 {
   "name": "roaseq",
   "version": "1.2.0",
-  "description": "Open-source ecommerce attribution platform. The FOSS alternative to Triple Whale. Multi-touch attribution, channel ROI, journey stitching. Your events, your models, your database.",
+  "description": "ROASEQ attribution app (FOSS subset). The self-hostable attribution engine that gets cherry-picked to the public roaseq repo. Open-source ecommerce attribution platform. The FOSS alternative to Triple Whale. Multi-touch attribution, channel ROI, journey stitching. Your events, your models, your database.",
   "license": "AGPL-3.0",
   "author": {
     "name": "Juan (juansbiz)",
     "email": "juan@hificopy.com",
     "url": "https://github.com/juansbiz"
   },
-  "homepage": "https://github.com/juansbiz/roaseq",
+  "homepage": "https://roaseq.com",
   "repository": {
     "type": "git",
     "url": "https://git.antieq.com/juansbiz/roaseq.git"
@@ -18,7 +18,6 @@
     "email": "juan@hificopy.com"
   },
   "keywords": [
-    "ecommerce",
     "attribution",
     "multi-touch",
     "triple-whale-alternative",
@@ -27,7 +26,8 @@
     "self-hosted",
     "postgresql",
     "typescript",
-    "react"
+    "react",
+    "ecommerce"
   ],
   "type": "module",
   "scripts": {
@@ -106,18 +106,6 @@
     "docker:logs": "cd docker/backend && docker-compose logs -f",
     "docker:restart": "npm run docker:down && npm run docker:up"
   },
-  "keywords": [
-    "attribution",
-    "multi-touch",
-    "triple-whale-alternative",
-    "foss",
-    "agpl",
-    "self-hosted",
-    "postgresql",
-    "typescript",
-    "react",
-    "ecommerce"
-  ],
   "dependencies": {
     "@aws-sdk/client-ses": "^3.679.0",
     "@dnd-kit/core": "^6.3.1",
